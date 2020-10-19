@@ -1,0 +1,65 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Ordering Syatem</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/profile.css">
+</head>
+<body>
+    <div class="container">
+        <div class="navBar">
+            <div class="site-title"><a href="index"> DELICIOUS CORNER </a></div>
+            <div class="hamburger ">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </div>
+           
+            <div class="nav-links">
+                    <div><a href="restaurants">RESTAURANTS</a></div>
+                    <div><a href="cart">CART</a></div>
+                    <div><a href="status?stat='LOGOUT'">LOGOUT</a></div>
+            </div>
+        </div>
+        <div class="profile">
+            <div class="greeting">HELLO <% if (data.length!=0){%> <span><%=data[0].firstName%></span><%}%></div>
+            <div class="activeOrders">
+                <% if (data.length!=0){
+                    // var i=1;
+                    data.forEach(function (element){ 
+                %>
+                    <div class="order">
+                        <div class="leftDiv">
+                            <div class="div1">
+                                <div class="restaurant"><%= element.rName; %></div>
+                                <div class="orderName"><%= element.productName; %></div>
+                            </div>
+                            <div class="div1">
+                                <div class="price"><%= element.price; %></div>
+                                <div class="qty"><%= element.Qty; %></div>
+                            </div>
+                        </div>
+                        <div class="status"><%= element.status; %></div>
+                    </div>
+                    <% }) %>
+                <% } %>
+            </div>
+            <div class="orderHistory"></div>
+            <div class="address">
+                <% if (data.length!=0){%> 
+                    <div> <span>ADDRESS :</span> <span><%=data[0].firstName%></span></div>
+                    <div> <span>State :</span> <span><%=data[0].firstName%></span></div>
+                    <div><span>Contact :</span> <span><%=data[0].phone%></span></div>
+                <%}%>
+            </div>
+            <div class="cards">
+                
+            </div>
+        </div>
+       
+    </div>
+    <script src="js/index.js"></script>
+    <script src="https://kit.fontawesome.com/04ce6063ff.js" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+*{
+    box-sizing: border-box;
+}
+.activeOrders{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+.order{
+    height: 150px;
+    width: 400px;
+    background-color: burlywood;
+    margin: 2%;
+    border-radius: 5%;
+    display: flex;
+}
+.div1{
+    display: flex;
+}
+.leftDiv{
+    width: 70%;
+}
+.status{
+    widows: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

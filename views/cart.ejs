@@ -1,0 +1,90 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MENU</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/cart.css">
+</head>
+<body>
+    <div class="container">
+        <div class="navBar">
+            <div class="site-title"><a href="index"> DELICIOUS CORNER </a></div>
+            <div class="hamburger ">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </div>
+            <div class="nav-links">
+                <div><a href="about">ABOUT</a></div>
+                <div><a href="#">HELP</a></div>
+                <div><a href="#">CONTACT</a></div>
+                <div><a href="status?stat='LOGOUT'">LOGOUT</a></div>
+            </div>
+        </div>
+
+
+        <div class="restaurants">
+            <form action="/cart" method="POST" class="formDiv">
+            <div class="cards">
+                    <!-- <div class="total"></div> -->
+                    <% if (data.length!=0){
+                        // var i=1;
+                        data.forEach(function (element){ 
+                    %>
+                    <div class="cardTemp">
+                            <div class="restDtls">
+                                <div class="image"><img src="images/<%= element.pImage; %>" alt= <%= element.pImage; %> height="100%" width="100%"></div>
+                                <div class="rInfo">
+                                    <div class="Pname"><%= element.productName; %></div>
+                                    <div class="Rname"><%= element.rName; %></div>
+                                </div>
+                                <div class="status"><%= element.status; %></div>
+                            </div>
+                            <div class="cart">
+                                <span>
+                                    <button class="remove qtyMod">-</button>
+                                    <span > <input type="text" value="<%= element.Qty; %>" name="Qty" class="qtyValue"></span> 
+                                    <button class="add qtyMod">+</button> 
+                                </span>
+                                <span>
+                                    <span>₹</span> 
+                                    <span class="price"><%= element.price; %></span>
+                                </span>
+                                <span>
+                                    <span class="deleteOrder"><a href="deleteCart?id=<%= element.orderId; %>"><i class="deleteProduct fas fa-trash-alt"></i></a></span>
+                                </span>
+
+                            </div>
+                            <div class="orderId"><input type="text" readonly="readonly" value="<%= element.orderId; %>" name="orderId" ></div>   
+                    </div>
+                        <% }) %>
+                    <% } %>
+                    
+                </div>  
+                <div class="placeOrder">
+                        <a href="#">PLACE ORDER</a>
+                    </div> 
+                    <div class="submit">
+                        <button type="submit">SUBMIT</button>
+                </div>
+                    
+                </form>       
+                <div class="priceDtl">
+                    <div class="cartDtls">
+                        <div class="totalAmt total"></div>
+                    </div>
+                </div>
+
+        </div>
+
+
+        
+       
+        
+    </div>
+    <script src="js/index.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="https://kit.fontawesome.com/04ce6063ff.js" crossorigin="anonymous"></script>
+</body>
+</html>

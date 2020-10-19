@@ -1,0 +1,84 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MENU</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/products.css">
+    <link rel="stylesheet" href="css/showProducts.css">
+</head>
+<body>
+    <div class="container">
+        <div class="navBar">
+            <div class="site-title"><a href=""> DELICIOUS CORNER </a></div>
+            <div class="hamburger ">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </div>
+            <div class="nav-links">
+                <div><a href="about">ABOUT</a></div>
+                    
+                    <div class="dropdown">
+                        <div class="dropbtn">USER</div>
+                        <div class="dropdown-content">
+                            <div><a href="login">LOGIN</a></div>
+                            <div><a href="register">REGISTER</a></div>
+                        </div>
+                    </div>
+                    <div><a href="addProduct">ADD</a></div>
+                    <div><a href="#">HELP</a></div>
+                    <div><a href="#">CONTACT</a></div>
+            </div>
+        </div>
+
+        <div class="restaurants">
+            <div class="cards">
+                <% if (data.length!=0){
+                    var i=1;
+                    data.forEach(function (element){ 
+                %>
+                <div class="cardTemp">
+                    <div class="productId"><%= element.productId; %></div>
+                    <div class="image"><img src="images/<%= element.pImage; %>" alt= <%= element.pImage; %> height="100%" width="100%"></div>
+                    <div class="Pname"><%= element.productName; %></div>
+                    <div class="price"><%= element.price; %></div>
+                    
+                    <div class="cart">
+                        <span value="status" class="modifyProduct" >MODIFY</span>
+                        <span><a href="deleteProduct?id=<%= element.productId; %>"><i class="deleteProduct fas fa-trash-alt"></i></a></span>
+                    </div>
+                </div>
+                    <% }) %>
+                <% } %>
+            </div>
+        </div>
+        <div class="show changeStatusDiv">
+            <form action="" method="POST" class="changeStatusForm" >
+                <div class="close"><i class="fas fa-times"></i></div>
+                <div class="id" >
+                    <span>PRODUCT ID </span>
+                    <span class="selectedOrderId"></span>
+                </div>
+                <div class="status">
+                    <span>NAME:</span>
+                    <span class="productName"></span>
+                </div>
+                <div class="status">
+                    <span>CURRENT PRICE:</span>
+                    <span class="currentPrice"></span>
+                </div>
+                <div class="modifiedStatus">
+                    <input type="text" name="newPrice" placeholder="CHANGE PRICE">
+                </div>
+                <div class="submit">
+                    <button type="submit">SUBMIT</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="js/index.js"></script>
+    <script src="js/showProducts.js"></script>
+    <script src="https://kit.fontawesome.com/04ce6063ff.js" crossorigin="anonymous"></script>
+</body>
+</html>

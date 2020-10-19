@@ -1,0 +1,56 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN PAGE</title>
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+<body>
+    <div class="navBar">
+        <div class="site-title"><a href="/"> DELICIOUS CORNER </a></div>
+        <div class="hamburger ">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+        </div>
+        <div class="nav-links">
+            <div><a href="about">ABOUT</a></div>
+                    
+            <div class="dropdown">
+                <div class="dropbtn">USER</div>
+                <div class="dropdown-content">
+                    <div><a href="login">LOGIN</a></div>
+                    <div><a href="register">REGISTER</a></div>
+                </div>
+            </div>
+            
+            <div><a href="#">HELP</a></div>
+            <div><a href="#">CONTACT</a></div>
+        </div>
+    </div>
+    <div class="container">
+       
+        <form action="" method="post" class="loginForm">
+            <div class="heading">
+                LOGIN.
+            </div>
+            <div class="formDiv firstDiv">
+                <input type="email" name="email" id="email" placeholder="EMAIL" class="email">
+            </div>
+            <div class="formDiv">
+                <input type="password" name="password" placeholder="PASSWORD" id="password" class="pass">
+            </div>
+            <div class="formDiv">
+                <button class="submitButton">SUBMIT</button>
+            </div>
+            <div class="formDiv forgotPass">
+                <span > <a href="addRestaurant">REGISTER RESTAURANT</a> </span>
+                <span > <a href="#">Forgot Password? </a> </span>
+            </div>
+        </form>
+    </div>
+
+    <script src="js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Aclonica&display=swap');
+*{
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+body{
+    position: relative;
+}
+.container{
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+.cards{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin-top: 5%;
+}
+.cardTemp{
+    box-sizing: border-box;
+    height: 350px;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    margin: 25px;
+    justify-content: space-evenly;
+    border: 2px solid #595959;
+    border-radius: 5%;
+    padding: 0;
+}
+
+.cardTemp div{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Aclonica', sans-serif;
+    font-size: 1.5rem;
+    background-color: #383838;
+    color: whitesmoke;
+    border-bottom: 2px solid black;
+}
+
+.cardTemp .element{
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-evenly;
+}
+.cardTemp .element span{
+    height: 100%;
+    width: 50%;
+    border: 1px solid black;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.changeStatusDiv{
+    background-color: #0d7377;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.changeStatusForm{
+    padding: 3% 1%;
+    position: relative;
+    height: 250px;
+    width: 400px;
+    background-color: #212121;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border-radius: 5%;
+}
+.changeStatusForm div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Aclonica', sans-serif;
+}
+.changeStatusForm div span{
+    /* width: 50%; */
+    margin: 0 5px;
+    color: #32e0c4;
+}
+.changeStatusForm div input{
+    font-family: 'Aclonica', sans-serif;
+    height: 30px;
+    width: 80%;
+    text-align: center;
+    border-radius: 20px;
+    color: #212121;
+}
+.changeStatusForm div button{
+    width: 80%;
+    height: 30px;
+    font-family: 'Aclonica', sans-serif;
+    color: #212121;
+    border-radius: 20px;
+}
+input:focus, textarea:focus, select:focus, button:focus{
+    border-radius: 20px;
+    border: 2px solid #a6a6a4;
+    outline: none;
+}
+.selectedOrderId{
+    width: 20%;
+}
+.show{
+    display: none;
+}
+.close{
+    position: absolute;
+    right: 10px;
+    top: 0;
+    color: whitesmoke;
+}

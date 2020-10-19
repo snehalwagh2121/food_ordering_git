@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+*{
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+.cards{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin-top: 5%;
+}
+.cardTemp{
+    position: relative;
+    box-sizing: border-box;
+    height: 200px;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    margin: 25px;
+    justify-content: center;
+    /* border: 2px solid #595959; */
+    border-radius: 5%;
+    padding: 0;
+    
+    box-shadow: 0 1px 2px 1px black;
+}
+.cardTemp .image{
+    height: 80%;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    box-shadow: violet;
+}
+
+.cardTemp .pInfo{
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Rubik', sans-serif;
+    background-color: #383838;
+    color: whitesmoke;
+    overflow: hidden;
+}
+.cardTemp .Pname{
+    font-size: 1.2rem;
+}
+.cardTemp .cart{
+    /* display: none; */
+    overflow: hidden;
+    position: absolute;
+    display: flex;
+    background-color: rgba(39, 39, 39, 0.5);
+    height: 0%;
+    width: 100%;
+    bottom: 0;
+    /* text-align: center; */
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    transition: height 0.5s ease;
+    margin: auto;
+    /* opacity: 0; */
+}
+.cardTemp:hover {
+}
+.cardTemp:hover .pInfo{
+    display: none;
+}
+.cardTemp:hover .image{
+    height: 100%;
+    filter: blur(2px);
+}
+.cardTemp:hover .cart{
+    height: 100%;
+    /* transition: height 5s ease; */
+}
+/* .cardTemp .cart span{
+    overflow: hidden;
+} */
+/* .deleteProduct{
+    overflow: hidden;
+    height: 25px;
+} */
+/* .errMsg{
+    text-align: center;
+    color: crimson;
+    font-family: 'Aclonica', sans-serif;
+    font-size: 1.2rem;
+    animation: seconds 1.0s forwards;
+    animation-iteration-count: 1;
+    animation-delay: 5s;
+}
+@keyframes seconds {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      left: -9999px;
+      position: absolute;     
+    }
+  } */

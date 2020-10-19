@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MENU</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/products.css">
+</head>
+<body>
+    <div class="container">
+        <div class="navBar">
+            <div class="site-title"><a href="index"> DELICIOUS CORNER </a></div>
+            <div class="hamburger ">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </div>
+            <div class="nav-links">
+                <div><a href="restaurants">RESTAURANTS</a></div>
+                <div class="status"><a href="status?stat=<%=status; %>"> <%= status; %></a></div>
+                <div class="loginOptions"><a href="register">REGISTER</a></div>
+                <div class="logoutOptions"><a href="cart">CART</a></div>
+                <div class="logoutOptions"><a href="profile"><i class="fas fa-user"></i></a></div>
+            </div>
+        </div>
+
+        <div class="restaurants">
+            <div class="cards">
+                <% if (data.length!=0){
+                    var i=1;
+                    data.forEach(function (element){ 
+                %>
+                <div class="cardTemp">
+                    <div class="image"><img src="images/<%= element.pImage; %>" alt= <%= element.pImage; %> height="100%" width="100%"></div>
+                    <div class="Pname pInfo"><%= element.productName; %></div>
+                    <div class="price pInfo">₹<%= element.price; %></div>
+                    <div class="cart"><a href="addToCart?id=<%= element.productId; %>">ADD TO CART</a></div>
+                </div>
+                    <% }) %>
+                <% } %>
+            </div>
+        </div>
+    </div>
+    <script src="js/index.js"></script>
+    <script src="https://kit.fontawesome.com/04ce6063ff.js" crossorigin="anonymous"></script>
+</body>
+</html>

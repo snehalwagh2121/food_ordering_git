@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+*{
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+.restaurants{
+    width: 100%;
+    display: flex;
+}
+.formDiv{
+    width: 70%;
+    height: 100%;
+}
+.cards{
+    /* width: 70%; */
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+.cardTemp{
+    box-sizing: border-box;
+    height: 150px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    margin: 25px;
+    justify-content: center;
+    border: 2px solid #595959;
+    border-radius: 15px;
+    padding: 10px 1px;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+.restDtls{
+    display: flex;
+    width: 100%;
+    height: 70%;
+    /* justify-content: center;
+    align-items: center; */
+}
+/* .restDtls div{
+    background-color: chartreuse;
+} */
+.restDtls .image{
+    height: 95%;
+    width: 35%;
+    background-position: center;
+    background-size: cover;
+    /* box-shadow: violet; */
+}
+.restDtls .rInfo{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 2%;
+    font-size: 1.2rem;
+}
+.restDtls .rInfo .Rname{
+    font-size: 1rem;
+}
+.restDtls .status{
+    width: 30%;
+    font-size: 1.2rem;
+    /* margin-right: 2%; */
+    text-align: end;
+}
+.orderId{
+    display: none;
+}
+.cardTemp .cart{
+    margin-top: 2%;
+    height: 20%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.cardTemp .cart span{
+    overflow: hidden;
+    height: 100%;
+    width: 30%;
+    text-align: center;
+}
+.cardTemp .cart span .price{
+    font-size: 1.2rem;
+}
+.cardTemp .cart span .qtyValue{
+    padding: 5px;
+    width: 15%;
+    border-radius: 5px;
+    border: none;
+    text-align: center;
+}
+.cardTemp .cart span .qtyMod{
+    border-radius: 50%;
+    border: none;
+    padding: 3px 7px;
+}
+.deleteProduct{
+    color: rgb(0, 0, 0);
+    /* margin-top: 30%; */
+    /* height: 120%; */
+} 
+.restaurants .priceDtl{
+    width: 30%;
+}
+.restaurants .priceDtl .cartDtls{
+    position: fixed;
+    width: 350px;
+    height: 350px;
+    border: 2px solid black;
+    /* margin: auto; */
+}

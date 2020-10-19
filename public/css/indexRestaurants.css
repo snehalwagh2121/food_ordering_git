@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap');
+*{
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+.cards{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin-top: 5%;
+}
+.cardTemp{
+    position: relative;
+    box-sizing: border-box;
+    height: 150px;
+    width: 300px;
+    display: flex;
+    margin: 25px;
+    justify-content: center;
+    /* border: 2px solid #595959; */
+    border-radius: 15px;
+    padding: 0;
+    box-shadow: 0 1px 2px 1px #637373;
+}
+.cardTemp .image{
+    margin: 10px;
+    width: 70%;
+    background-position: center;
+    background-size: cover;
+    /* box-shadow: violet; */
+    /* background-color: black; */
+}
+.cardTemp .info{
+    /* position: absolute; */
+    height: 100%;
+    width: 30%;
+    /* bottom: 0; */
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    transition: width 0.5s ease;
+    /* transition: height 0.5s ease; */
+    /* background-color: rgba(55,58,64,0.7); */
+}
+.cardTemp .Rname, .cardTemp .location{
+    /* height: 30%; */
+    width: 100%;
+    text-align: center;
+    /* color: whitesmoke; */
+    color: black;
+    font-family: 'Noto Serif', serif;
+}
+.cardTemp .Rname{
+    font-weight: bolder;
+    font-size: 1rem;
+}
+.cardTemp .location{
+    font-weight: lighter;
+    font-size: 0.8rem;
+}
+
+.cardTemp:hover{
+    box-shadow: 0 1px 2px 1px black;
+}
+.cardTemp:hover .image{
+    width: 100%;   
+    margin: 0; 
+    filter: blur(1px);
+    /* backdrop-filter: blur(50px); */
+}
+.cardTemp:hover .info{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.6);
+    margin: auto;
+    transition: width 0.5s ease;
+}
+.cardTemp:hover .info .Rname{
+    color: white;
+    font-size: 1.5rem;
+}
+.cardTemp:hover .info .location{
+    color: #aaaaaa;
+    font-size: 1rem;
+}

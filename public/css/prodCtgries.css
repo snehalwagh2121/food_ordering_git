@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+*{
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+.cards{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin-top: 5%;
+}
+.cardTemp{
+    box-sizing: border-box;
+    height: 250px;
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    margin: 25px;
+    justify-content: center;
+    /* border: 1px solid #f6f5f5; */
+    border-radius: 5%;
+    padding: 0;
+    box-shadow: 0 2px 5px 1px #9c9c9c;
+}
+.cardTemp .image{
+    height: 60%;
+    width: 95%;
+    margin: 0 auto;
+    background-position: center;
+    background-size: cover;
+    box-shadow: violet;
+}
+
+.cardTemp .Pname, .cardTemp .restaurant, .cardTemp .links{
+    margin: 0 auto;
+    height: 10%;
+    width: 90%;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    /* background-color: #383838; */
+    /* color: whitesmoke; */
+}
+.cardTemp .Pname{
+    font-weight: bold;
+}
+.cards .cardTemp:hover{
+    border: 2px solid rgb(180, 180, 180);
+}
+.cardTemp .links{
+    display: flex;
+    /* justify-content: space-evenly; */
+    justify-content: space-between;
+}
+.links .price, .links .cart a, .links .explore a{
+    color: black;
+    font-weight: bolder;
+}
+
+.links .cart:hover a, .links .explore:hover a{
+    color: #424242;
+}
+/* .links .price{
+    font-weight: bolder;
+} */
+/* .cardTemp .cart span{
+    overflow: hidden;
+} */

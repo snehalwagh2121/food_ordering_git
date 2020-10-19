@@ -1,0 +1,103 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Ordering Syatem</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/indexRestaurants.css">
+</head>
+<body>
+    <div class="container">
+        <div class="navBar">
+            <div class="site-title"><a href="index"> DELICIOUS CORNER </a></div>
+            <div class="hamburger ">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </div>
+           
+            <div class="nav-links">
+                    <div class="status"><a href="status?stat=<%=status; %>"> <%= status; %></a></div>
+                    <div class="loginOptions"><a href="register">REGISTER</a></div>
+                    <div class="logoutOptions"><a href="cart">CART</a></div>
+                    <div class="logoutOptions"><a href="profile"><i class="fas fa-user"></i></a></div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="heading">CATEGORIES</div>
+            <div class="categories">
+                <div class="cards breakfast">
+                    <div class="categoryImg"></div>
+                    <div class="link"><a href="foodCategory?category=brunch">BRUNCH</a></div>
+                </div>
+                <div class="cards meal">
+                    <div class="categoryImg"></div>
+                    <div class="link"><a href="foodCategory?category=meal">MEAL</a></div>
+                </div>
+                <div class="cards dessert">
+                    <div class="categoryImg"></div>
+                    <div class="link"><a href="foodCategory?category=dessert">DESSETS</a></div>
+                </div>
+                <div class="cards drinks">
+                    <div class="categoryImg"></div>
+                    <div class="link"><a href="foodCategory?category=drinks">DRINKS</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="outlets">
+            <div class="outletHeading">EXPLORE YOUR AREA</div>
+            <div class="places">
+                <div class="cities"><a href="restaurant?place=ahmednagar">Ahmednagar</a></div>
+                <div class="cities"><a href="restaurant?place=pune">Pune</a></div>
+                <div class="cities"><a href="restaurant?place=Nashik">Nashik</a></div>
+                <div class="cities"><a href="restaurant?place=Aurangabad">Aurangabad</a></div>
+                <div class="cities"><a href="restaurant?place=NaviMumbai">Navi Mumbai</a></div>
+                <div class="cities"><a href="restaurant?place=Solapur">Solapur</a></div>
+                <div class="cities"><a href="restaurant?place=PimpriChinchwad">Pimpri-Chinchwad</a></div>
+                <div class="cities"><a href="restaurant?place=Amravati">Amravati</a></div>
+                <div class="cities"><a href="restaurant?place=Akola">Akola</a></div>
+                <div class="cities"><a href="restaurant?place=Beed">Beed</a></div>
+                <div class="cities"><a href="restaurant?place=Bengaluru">Bengaluru</a></div>
+                <div class="cities"><a href="restaurant?place=Mysuru">Mysuru</a></div>
+                <div class="cities"><a href="restaurant?place=Bidar">Bidar</a></div>
+                <div class="cities"><a href="restaurant?place=Chikkamagaluru">Chikkamagaluru</a></div>
+                <div class="cities"><a href="restaurant?place=NewDelhi">New Delhi</a></div>
+                <div class="cities"><a href="restaurant?place=Shahjahanabad">Shahjahanabad</a></div>
+                <div class="cities"><a href="restaurant?place=Firozobad">Firozobad</a></div>
+                <div class="cities"><a href="restaurant?place=Jahanpanah">Jahanpanah</a></div>
+                <div class="cities"><a href="restaurant?place=Siri">Siri</a></div>
+                <div class="cities"><a href="restaurant?place=Bihar">Bihar</a></div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="footerHeading">DELICIOUS CORNER</div>
+            <div class="footerColm">
+                <div class="company">
+                    <div class="companyHeading">COMPANY</div>
+                    <div class="whoWeAre"><a href="#">WHO WE ARE</a></div>
+                    <div class="whoWeAre"><a href="#">BLOG</a></div>
+                    <div class="whoWeAre"><a href="#">CAREER</a></div>
+                    <div class="whoWeAre"><a href="#">REPORT FRAUD</a></div>
+                </div>
+                <div class="company">
+                    <div class="companyHeading">FOR RESTAURANTS</div>
+                    <div class="whoWeAre"><a href="addRestaurant">ADD RESTAURANT</a></div>
+                    <div class="whoWeAre"><a href="rLogin">RESTAURANT LOGIN</a></div>
+                    <div class="whoWeAre"><a href="#">PRIVACY</a></div>
+                    <div class="whoWeAre"><a href="#">SECURITY</a></div>
+                </div>
+                <div class="socialLinks">
+                    <div class="companyHeading">SOCIAL LINKS</div>
+                    <div class="links">
+                        <div class="github"><a href="https://github.com/snehalwagh2121" target="_blank"><i class="fab fa-github"></i></a></div>
+                        <div class="IG"><a href="https://www.instagram.com/snehal.v.wagh/" target="_blank"><i class="fab fa-instagram"></i></a></div>
+                        <div class="twitter"><a href="https://twitter.com/wagh_snehal" target="_blank"><i class="fab fa-twitter"></i></a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/index.js"></script>
+    <script src="https://kit.fontawesome.com/04ce6063ff.js" crossorigin="anonymous"></script>
+</body>
+</html>

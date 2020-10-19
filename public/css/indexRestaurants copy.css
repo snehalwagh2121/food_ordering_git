@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Aclonica&display=swap');
+*{
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+.cards{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin: 10px;
+}
+.cardTemp{
+    box-sizing: border-box;
+    height: 350px;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    margin: 25px;
+    justify-content: center;
+    border: 2px solid #595959;
+    border-radius: 5%;
+    padding: 0;
+}
+.cardTemp .image{
+    height: 70%;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    box-shadow: violet;
+}
+.image1{
+    background-image: url(../images/restaurant1.jpg);
+}
+.image2{
+    background-image: url(../images/restaurant2.jpg);
+}
+.image3{
+    background-image: url(../images/restaurant3.jpg);
+}
+.image4{
+    background-image: url(../images/restaurant4.jpg);
+}
+.image5{
+    background-image: url(../images/restaurant5.jpg);
+}
+.image6{
+    background-image: url(../images/restaurant6.jpg);
+}
+.image7{
+    background-image: url(../images/resaturant7.jpg);
+}
+.image8{
+    background-image: url(../images/restaurant8.jpg);
+}
+.image9{
+    background-image: url(../images/restaurant9.jpg);
+}
+.image10{
+    background-image: url(../images/restaurant10.jpg);
+}
+.cardTemp .Rname, .cardTemp .location{
+    height: 15%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Aclonica', sans-serif;
+    font-size: 1.5rem;
+    background-color: #383838;
+    color: whitesmoke;
+}
+.cardTemp .Rname{
+    border-bottom: 2px solid black;
+}
