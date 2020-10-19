@@ -25,10 +25,10 @@ server.use(session({
 // server.use(fileUpload());
 
 const db=mysql.createConnection({
-    host: "localhost",
+    host: "food-db.cqaznpmn9lsc.us-east-2.rds.amazonaws.com",
     database:"delicious_corner",
-    user:"root",
-    password:""
+    user:"admin",
+    password:"password"
 })
 db.connect((err)=>{
     if(!err)
@@ -265,7 +265,7 @@ server.get('/restaurant', (req, res)=>{
 });
 server.get('/cart', (req, res)=>{
     console.log('showing cart page for user_id : '+req.session.userId);
-    const sql="select p.pImage, o.orderId, p.productName, p.price, o.Qty, o.status, r.rName from orders o "+
+    const sql="select p.pImage, o.orderId, p.productName, p.price, o.Qty, o.Ostatus, r.rName from orders o "+
     "inner join products p on (o.Pid=p.productId) inner join restaurants r on (p.rId= r.restaurantId)"+
     "where o.CId="+req.session.userId;
     console.log('query to fetch cart: '+sql);
@@ -368,7 +368,7 @@ server.get('/addToCart', (req, res)=>{
                             }
                         })
                     }else{
-                            const sql="insert into orders(`CId`,`Pid`,`Qty`,`status`) values ("+req.session.userId+","+req.query.id+",1, 'RECEIVED')";
+                            const sql="insert into orders(`CId`,`Pid`,`Qty`,`Ostatus`) values ("+req.session.userId+","+req.query.id+",1, 'RECEIVED')";
                             console.log('query to insert order in table : '+sql);
                             db.query(sql, (err, result)=>{
                                 if(!err){
@@ -412,7 +412,7 @@ server.get('/profile', (req, res)=>{
             "inner join users u on(u.userId=o.CId) "+
             "inner join products p on (o.Pid= p.productId) "+
             "inner join restaurants r on(p.rId= r.restaurantId)"+
-            "where CId="+req.session.userId+" and status!='delivered'";
+            "where CId="+req.session.userId+" and Ostatus!='delivered'";
             console.log('query to fetch active orders: '+sql);
             db.query(sql, (err, result)=>{
                 if(err){
@@ -505,7 +505,7 @@ server.post('/rLogin', urlEncodedParser ,(req, res)=>{
     }else if(result.length>0){
         console.log('login successfull');
         console.log("result : "+result[0].restaurantId);
-        const sql="select o.orderId,u.firstName,u.lastName,p.productName, u.address, u.phone, o.Qty, o.status, o.CId  "+
+        const sql="select o.orderId,u.firstName,u.lastName,p.productName, u.address, u.phone, o.Qty, o.Ostatus, o.CId  "+
         "from users u  join orders o  on u.userId = o.CId "+
         "inner join products p on o.Pid =p.productId where  o.Pid in (select p.productId from products p where p.rId = "+result[0].restaurantId+")";
         console.log("query to fetch orders: "+sql);
@@ -559,7 +559,7 @@ server.get('/orders', (req,res)=>{
 });
 server.post('/orders',urlEncodedParser , (req, res)=>{
     console.log('change startus body : ',req.body);
-    const sql="update orders set status = '"+req.body.newStatus+"' where orderId= "+req.body.orderId;
+    const sql="update orders set Ostatus = '"+req.body.newStatus+"' where orderId= "+req.body.orderId;
     console.log('query fired : '+sql);
     db.query(sql, (err, result)=>{
         if(err){
@@ -581,7 +581,7 @@ server.get('/deleteOrder',(req, res)=>{
         }
         else{
             console.log("successfully deleted the order with order id = "+req.query.id);
-            const sql="select o.orderId,u.firstName,u.lastName,p.productName, u.address, u.phone, o.Qty, o.status, o.CId  "+
+            const sql="select o.orderId,u.firstName,u.lastName,p.productName, u.address, u.phone, o.Qty, o.Ostatus, o.CId  "+
             "from users u  join orders o  on u.userId = o.CId "+
             "inner join products p on o.Pid =p.productId where  o.Pid in (select p.productId from products p where p.rId = "+req.session.rId+")";
             console.log("query to fetch orders: "+sql);
