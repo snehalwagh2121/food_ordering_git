@@ -21,6 +21,7 @@ a{
     color: whitesmoke;
 }
 .navBar{
+    z-index: 5;
     margin-top: 0;
     width: 100%;
     /* position: fixed ; */
@@ -35,23 +36,7 @@ a{
     color: whitesmoke;
     padding: 10px;
 }
-.nav-links ul{
-    display: flex;
-}
-.nav-links ul li{
-    list-style: none;
-    padding: 5px;
-    margin-right: 15px;
-}
-.nav-links ul li:hover{
-    background-color: violet;
-}
-.nav-links ul li a{
-    font-family: 'Audiowide', cursive;
-    font-size: 1.3rem;
-    text-decoration: none;
-    color: whitesmoke;
-}
+
 .nav-links{
     width: 30vw;
     display: flex;
@@ -108,83 +93,21 @@ a{
     overflow: hidden;
     /* font-size: 1.3rem; */
 }
-@media (max-width: 1200px){
-    .site-title{
-        font-size: 1.3rem;
-    }  
-    .nav-links ul li a{
-        font-size: 1rem;
-    }
-}
-@media (max-width: 1000px){
-    .site-title{
-        font-size: 1.2rem;
-    }  
-    .nav-links ul li a{
-        font-size: 0.8rem;
-    }
-}
 
-@media (max-width: 800px){
-    .site-title{
-        font-size: 1.2rem;
-    }  
-    .hamburger{
-        display: flex;
-    }
-    .navBar{
-        flex-direction: column;
-    }
-    .nav-links{
-        display: none;
-    }
-    .nav-links ul{
-        flex-direction: column;
-        margin-left: 0;
-        align-items: center;
-    }
-    .toggle-active{
-        display: block;
-    }
-}
-@media (max-width: 600px){
-    .navBar{
-        position: fixed;
-    }
-    .nav-links{
-        width: 100vw;
-        text-align: center;
-    }
-    .dropdown:hover .dropbtn{
-        display: none ;
-    }
-    .dropdown:hover .dropdown-content{
-        display: flex;
-        position: relative;
-        padding: 0;
-        justify-content: space-evenly;
-    } 
-    .site-title{
-        font-size: 1rem;
-    }  
-    .hamburger{
-        width: 1.7rem;
-        margin-right: 5%;
-    }
-}
 .content{
-    margin-top: 5%;
+    margin-top: 7%;
     /* background-color: blanchedalmond; */
     width: 100vw;
-    height: 60vh;
-    overflow: hidden;
+    /* height: 60vh; */
+    /* overflow: hidden; */
 }
 .categories{
     /* margin-top: 10%; */
     /* background-color: #aaaaaa; */
-    height: 90%;
+    /* height: 90%; */
     display: flex;
     justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 .heading{
     text-align: center;
@@ -195,7 +118,7 @@ a{
     width: 220px;
     border-radius: 5%;
     border: 2px solid #6e6d6d;
-    margin:auto;
+    margin:2%;
     background-color: #637373;
     /* margin: 2px; */
 }
@@ -290,4 +213,101 @@ a{
 }
 .show{
     display: none;
+}
+
+@media (max-width: 1200px){
+    .site-title{
+        font-size: 1.3rem;
+    }  
+    .nav-links ul li a{
+        font-size: 1rem;
+    }
+}
+@media (max-width: 1000px){
+    .site-title{
+        font-size: 1.2rem;
+    }  
+    .nav-links ul li a{
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 800px){
+    .site-title{
+        font-size: 1.2rem;
+    }  
+    .hamburger{
+        display: flex;
+    }
+    .navBar{
+        flex-direction: column;
+    }
+    .nav-links{
+        display: none;
+    }
+    .nav-links ul{
+        flex-direction: column;
+        margin-left: 0;
+        align-items: center;
+    }
+    .toggle-active{
+        display: block;
+    }
+}
+@media (max-width: 600px){
+    .navBar{
+        position: fixed;
+    }
+    .nav-links{
+        width: 100vw;
+        text-align: center;
+    }
+    .dropdown:hover .dropbtn{
+        display: none ;
+    }
+    .dropdown:hover .dropdown-content{
+        display: flex;
+        position: relative;
+        padding: 0;
+        justify-content: space-evenly;
+    } 
+    .site-title{
+        font-size: 1rem;
+    }  
+    .hamburger{
+        width: 1.7rem;
+        margin-right: 5%;
+    }
+    .content{
+        margin-top: 10%;
+        height: auto;
+    }
+    .content .heading{
+        font-size: 1.5rem;
+    }
+    .categories .cards{
+        height: 170px;
+        width: 170px;
+        margin: 1%;
+    }
+    .categories .cards .link a{
+        font-size: 1rem;
+    }
+    .outlets .outletHeading{
+        font-size: 1.5rem;
+    }
+    .cities{
+        width: 30%;
+        font-size: 1rem;
+    }
+    .footer .footerHeading{
+        font-size: 1.5rem;
+    }
+    .company .companyHeading{
+        font-size: 1.1rem;
+        margin: 0;
+    }
+    .company .whoWeAre{
+        font-size: 0.8rem;
+    }
 }
