@@ -218,18 +218,12 @@ a{
 @media (max-width: 1200px){
     .site-title{
         font-size: 1.3rem;
-    }  
-    .nav-links ul li a{
-        font-size: 1rem;
-    }
+    } 
 }
 @media (max-width: 1000px){
     .site-title{
         font-size: 1.2rem;
     }  
-    .nav-links ul li a{
-        font-size: 0.8rem;
-    }
 }
 
 @media (max-width: 800px){
@@ -245,14 +239,10 @@ a{
     .nav-links{
         display: none;
     }
-    .nav-links ul{
-        flex-direction: column;
-        margin-left: 0;
-        align-items: center;
-    }
+    
     .toggle-active{
         display: block;
-    }
+    } 
 }
 @media (max-width: 600px){
     .navBar{
@@ -262,15 +252,7 @@ a{
         width: 100vw;
         text-align: center;
     }
-    .dropdown:hover .dropbtn{
-        display: none ;
-    }
-    .dropdown:hover .dropdown-content{
-        display: flex;
-        position: relative;
-        padding: 0;
-        justify-content: space-evenly;
-    } 
+     
     .site-title{
         font-size: 1rem;
     }  
