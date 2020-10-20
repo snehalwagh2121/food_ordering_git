@@ -150,7 +150,7 @@ a{
     box-shadow: 0 3px 6px 3px #4c4c4c;
 }
 .outlets{
-    height: 50vh;
+    /* height: 50vh; */
     width: 90vw;
     margin: 0 auto;
 }
@@ -298,7 +298,7 @@ a{
     }
     .cities{
         width: 30%;
-        font-size: 1rem;
+        font-size: 0.8rem;
     }
     .footer .footerHeading{
         font-size: 1.5rem;
