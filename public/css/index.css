@@ -41,7 +41,7 @@ a{
 .nav-links{
     /* background-color: aliceblue; */
     margin-right: 10px;
-    width: 10%;
+    width: 20%;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -121,6 +121,10 @@ a{
     margin:2%;
     background-color: #637373;
     /* margin: 2px; */
+}
+.categories .cards .link{
+    text-align: center;
+    margin-top: 5%;
 }
 .categoryImg{
     height: 80%;
