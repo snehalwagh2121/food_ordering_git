@@ -15,12 +15,27 @@
                 <span class="line"></span>
                 <span class="line"></span>
             </div>
+
+            <div class="searchBar">
+                <input type="text" class="searchItem" placeholder="SEARCH..">
+                <i class="fa fa-search"></i>
+            </div>
            
             <div class="nav-links">
-                    <div class="status"><a href="status?stat=<%=status; %>"> <%= status; %></a></div>
+                    <div class="status loginOptions"><a href="status?stat=<%=status; %>"> <%= status; %></a></div>
                     <div class="loginOptions"><a href="register">REGISTER</a></div>
-                    <div class="logoutOptions"><a href="cart">CART</a></div>
-                    <div class="logoutOptions"><a href="profile"><i class="fas fa-user"></i></a></div>
+                    <div class="logoutOptions"><a href="cart" class="cart"><i class="fas fa-shopping-cart"></i></a></div>
+                    <div class="dropdown logoutOptions">
+                        <div class="dropbtn profile"><i class="fas fa-user"></i></div>
+                        <div class="dropdown-content">
+                            <div><a href="rLogin">PROFILE</a></div>
+                            <div><a href="status?stat=<%=status; %>">LOGOUT</a></div>
+                        </div>
+                    </div>
+                    <!-- <div class="logoutOptions profile"><i class="fas fa-user"></i>
+                        <div class="view"><a href="profile">PROFILE</a></div>
+                        <div class="logout"><a href="status?stat=<%=status; %>">LOGOUT</a></div>
+                    </div> -->
             </div>
         </div>
         <div class="content">

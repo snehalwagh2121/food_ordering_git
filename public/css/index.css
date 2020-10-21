@@ -30,6 +30,7 @@ a{
     justify-content: space-between;
 }
 .site-title{
+    /* background-color: aquamarine; */
     font-family: 'Lato', sans-serif;
     font-size: 1.7rem;
     margin: auto 5px;
@@ -38,6 +39,7 @@ a{
 }
 
 .nav-links{
+    /* background-color: aliceblue; */
     width: 30vw;
     display: flex;
     justify-content: space-evenly;
@@ -78,7 +80,6 @@ a{
 }
 .nav-links div a{
     font-size: 1.3rem;
-
 }
 .dropdown:hover .dropdown-content{
     display: block;
@@ -89,13 +90,10 @@ a{
 .dropdown-content div{
     padding: 10px 0;
 }
-.fas{
-    overflow: hidden;
-    /* font-size: 1.3rem; */
-}
+
 
 .content{
-    margin-top: 7%;
+    margin-top: 5%;
     /* background-color: blanchedalmond; */
     width: 100vw;
     /* height: 60vh; */
@@ -214,7 +212,37 @@ a{
 .show{
     display: none;
 }
-
+.searchBar{
+    overflow: hidden;
+    margin: auto ;
+    /* height: 200%; */
+    position: relative;
+    width: 35%;
+}
+.searchBar input{
+    border-radius: 15px;
+    border: none;
+    font-size: 1rem;
+    padding: 5px 20px;
+    width: 100%;
+}
+.searchBar i{
+    position: absolute;
+    right: 8px;
+    top:2px;
+    height: 100%;
+    font-size: 1.5rem;
+    margin: auto;
+}
+.cart i{
+    font-size: 1.5rem;
+}
+.profile i{
+    font-size: 1.5rem;
+}
+input:focus, textarea:focus, select:focus, button:focus{
+    outline: none;
+}
 @media (max-width: 1200px){
     .site-title{
         font-size: 1.3rem;
