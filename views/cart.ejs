@@ -16,10 +16,15 @@
                 <span class="line"></span>
             </div>
             <div class="nav-links">
-                <div><a href="about">ABOUT</a></div>
-                <div><a href="#">HELP</a></div>
-                <div><a href="#">CONTACT</a></div>
-                <div><a href="status?stat='LOGOUT'">LOGOUT</a></div>
+                <div class="status loginOptions"><a href="status?stat=<%=status; %>"> <%= status; %></a></div>
+                    <div class="loginOptions"><a href="register">REGISTER</a></div>
+                    <div class="dropdown logoutOptions">
+                        <div class="dropbtn profile"><i class="fas fa-user"></i></div>
+                        <div class="dropdown-content">
+                            <div><a href="profile">PROFILE</a></div>
+                            <div><a href="status?stat=<%=status; %>">LOGOUT</a></div>
+                        </div>
+                    </div>
             </div>
         </div>
 

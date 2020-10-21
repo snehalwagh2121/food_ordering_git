@@ -3,6 +3,10 @@
     box-sizing: border-box;
     overflow-x: hidden;
 }
+.nav-links{
+    /* margin-right: 10px; */
+    width: 40%;
+}
 .cards{
     display: flex;
     justify-content: space-evenly;
@@ -68,3 +72,10 @@
 /* .cardTemp .cart span{
     overflow: hidden;
 } */
+
+@media (max-width: 600px){
+    .navBar .nav-links{
+        text-align: center;
+        width: 100%;
+    }
+}

@@ -120,3 +120,10 @@ input:focus, textarea:focus, select:focus, button:focus{
     top: 0;
     color: whitesmoke;
 }
+
+@media (max-width: 600px){
+    .navBar .nav-links{
+        text-align: center;
+        width: 100%;
+    }
+}

@@ -3,6 +3,9 @@
     box-sizing: border-box;
     overflow-x: hidden;
 }
+.nav-links{
+    width: 35%;
+}
 .cards{
     display: flex;
     justify-content: space-evenly;
@@ -102,3 +105,10 @@
       position: absolute;     
     }
   } */
+
+  @media (max-width: 600px){
+    .navBar .nav-links{
+        text-align: center;
+        width: 100%;
+    }
+}

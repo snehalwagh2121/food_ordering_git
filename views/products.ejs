@@ -20,7 +20,13 @@
                 <div class="status"><a href="status?stat=<%=status; %>"> <%= status; %></a></div>
                 <div class="loginOptions"><a href="register">REGISTER</a></div>
                 <div class="logoutOptions"><a href="cart">CART</a></div>
-                <div class="logoutOptions"><a href="profile"><i class="fas fa-user"></i></a></div>
+                <div class="dropdown logoutOptions">
+                    <div class="dropbtn profile"><i class="fas fa-user"></i></div>
+                    <div class="dropdown-content">
+                        <div><a href="profile">PROFILE</a></div>
+                        <div><a href="status?stat=<%=status; %>">LOGOUT</a></div>
+                    </div>
+                </div>
             </div>
         </div>
 
