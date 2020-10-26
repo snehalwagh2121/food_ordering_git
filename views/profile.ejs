@@ -17,49 +17,149 @@
             </div>
            
             <div class="nav-links">
-                    <div><a href="restaurants">RESTAURANTS</a></div>
-                    <div><a href="cart">CART</a></div>
-                    <div><a href="status?stat='LOGOUT'">LOGOUT</a></div>
+                <div class="restaurants"><a href="restaurants">RESTAURANTS</a></div>
+                <div class="logoutOptions"><a href="cart" class="cart"><i class="fas fa-shopping-cart"></i></a></div>
+                <div class="dropdown logoutOptions">
+                    <div class="dropbtn profile"><i class="fas fa-user"></i></div>
+                    <div class="dropdown-content">
+                        <div><a href="status?stat=LOGOUT">LOGOUT</a></div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="profile">
-            <div class="greeting">HELLO <% if (data.length!=0){%> <span><%=data[0].firstName%></span><%}%></div>
-            <div class="activeOrders">
-                <% if (data.length!=0){
-                    // var i=1;
-                    data.forEach(function (element){ 
-                %>
-                    <div class="order">
-                        <div class="leftDiv">
-                            <div class="div1">
-                                <div class="restaurant"><%= element.rName; %></div>
-                                <div class="orderName"><%= element.productName; %></div>
+        <div class="profilePage">
+            <div class="navigate">
+                <div class="navBox">
+                    <div class="greeting">HELLO <% if (data.length!=0){%> <span><%=data[0].firstName%></span><%}%></div>
+                    <div class="navContent">
+                        <div class="userInfo"><a href="#personalInfo">PERSONAL INFO</a></div>
+                        <div class="currentOrders"><a href="#activeOrders">ACTIVE ORDERS</a></div>
+                        <div class="prevOrders"><a href="#orderHistory">PAST ORDERS</a></div>
+                        <!-- <div class="userAddress">ADDRESS</div>
+                        <div class="cards">CARDS</div> -->
+                    </div>
+                </div>
+            </div>
+            <div class="profileContent">
+                <div class="personalInfo" id="personalInfo">
+                    <div class="heading">PERSONAL INFO</div>
+                   <form action="" method="POST" class="infoForm">
+                        <div class="editBtn"><button>EDIT</button></div>
+                        <div class="nameInfo">
+                            <div class="fnameInfo info">
+                                <label for="fname">FIRST NAME :</label>
+                                <input class="personalEdit" type="text" id="fname" name="fname" value="<%=data[0].firstName%>" disabled>
                             </div>
-                            <div class="div1">
-                                <div class="price"><%= element.price; %></div>
-                                <div class="qty"><%= element.Qty; %></div>
+                            <div class="lnameInfo info">
+                                <label for="lname">LAST NAME : </label>
+                                <input class="personalEdit" type="text" name="lname" id="lname" value="<%=data[0].lastName%>" disabled >
                             </div>
                         </div>
-                        <div class="status"><%= element.status; %></div>
+                        <div class="email info">
+                            <label for="emailInfo">EMAIL : </label>
+                            <input class="personalEdit" type="email" name="email" placeholder="email" value="<%=data[0].email%>" id="emailInfo" disabled>
+                        </div>
+                        <div class="mobile info">
+                            <label for="contact">CONTACT : </label>
+                            <input class="personalEdit" name="contact" type="text" value="<%=data[0].phone%>" id="contact" disabled>
+                        </div>
+                        <div class="address info"> 
+                           <label for="address">ADDRESS : </label>
+                           <input class="personalEdit" type="text" id="address" value="<%=data[0].address%>" name="address" disabled>
+                        </div>
+                        <div class="state info"> 
+                            <label for="state"> STATE : </label>
+                            <input class="personalEdit" type="text" id="state" value="<%=data[0].State%></span>" name="state" disabled>
+                        </div>
+                        <div class="submit">
+                            <button type="submit">SAVE</button>
+                        </div>
+                   </form>
+                </div>
+                <div class="activeOrders" id="activeOrders">
+                    <div class="heading">ACTIVE ORDERS</div>
+                    <% if (data.length!=0){
+                        // var i=1;
+                        data.forEach(function (element){ 
+                            if(element.Ostatus != "DELIVERED"){
+                    %>
+                        <div class="order">
+                            
+                                <div class="orderSec">
+                                    <div class="row1">ORDER</div>
+                                    <div class="row">
+                                        <div class="orderImg"><img src="images/<%= element.pImage; %>" alt="<%= element.pImage; %>" height="100%" width="100%"></div>
+                                        <div class="orderInfo">
+                                            <div class="orderName"><%= element.productName; %></div>
+                                            <div class="restaurant"><%= element.rName; %></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="price">
+                                    <div class="row1">PRICE</div>
+                                    <div class="row2">₹<%= element.price; %></div>
+                                </div>
+                                <div class="qty">
+                                    <div class="row1">QUANTITY</div>
+                                    <div class="row2"><%= element.Qty; %></div>
+                                </div>
+                                <div class="status">
+                                    <div class="row1">STATUS</div>
+                                    <div class="row2"><%= element.Ostatus; %></div>
+                                </div>
+                                <div class="cancelOrder"><a href="">CANCEL ORDER</a></div>
+                            
+                        </div>
+                        <% } %>
+                        <% }) %>
+                    <% } %>
+                </div>
+                <div class="orderHistory" id="orderHistory">
+                    <div class="heading">PAST ORDERS</div>
+                    <% if (data.length!=0){
+                        // var i=1;
+                        data.forEach(function (element){ 
+                            if(element.Ostatus === "DELIVERED"){
+                    %>
+                    <div class="order">
+                            
+                            <div class="orderSec">
+                                <div class="row1">ORDER</div>
+                                <div class="row">
+                                    <div class="orderImg"><img src="images/<%= element.pImage; %>" alt="<%= element.pImage; %>" height="100%" width="100%"></div>
+                                    <div class="orderInfo">
+                                        <div class="orderName"><%= element.productName; %></div>
+                                        <div class="restaurant"><%= element.rName; %></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="price">
+                                <div class="row1">PRICE</div>
+                                <div class="row2">₹<%= element.price; %></div>
+                            </div>
+                            <div class="qty">
+                                <div class="row1">QUANTITY</div>
+                                <div class="row2"><%= element.Qty; %></div>
+                            </div>
+                            <div class="status">
+                                <div class="row1">STATUS</div>
+                                <div class="row2"><%= element.Ostatus; %></div>
+                            </div>
+
                     </div>
-                    <% }) %>
-                <% } %>
-            </div>
-            <div class="orderHistory"></div>
-            <div class="address">
-                <% if (data.length!=0){%> 
-                    <div> <span>ADDRESS :</span> <span><%=data[0].firstName%></span></div>
-                    <div> <span>State :</span> <span><%=data[0].firstName%></span></div>
-                    <div><span>Contact :</span> <span><%=data[0].phone%></span></div>
-                <%}%>
-            </div>
-            <div class="cards">
-                
+                    <% } %>
+                        <% }) %>
+                    <% } %>
+                </div>
             </div>
         </div>
+
        
     </div>
     <script src="js/index.js"></script>
+    <script src="js/profile.js"></script>
     <script src="https://kit.fontawesome.com/04ce6063ff.js" crossorigin="anonymous"></script>
 </body>
 </html>

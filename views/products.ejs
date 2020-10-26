@@ -19,31 +19,49 @@
                 <div><a href="restaurants">RESTAURANTS</a></div>
                 <div class="status"><a href="status?stat=<%=status; %>"> <%= status; %></a></div>
                 <div class="loginOptions"><a href="register">REGISTER</a></div>
-                <div class="logoutOptions"><a href="cart">CART</a></div>
+                <div class="logoutOptions"><a href="cart"><i class="fas fa-shopping-cart"></i></a></div>
                 <div class="dropdown logoutOptions">
                     <div class="dropbtn profile"><i class="fas fa-user"></i></div>
                     <div class="dropdown-content">
                         <div><a href="profile">PROFILE</a></div>
-                        <div><a href="status?stat=<%=status; %>">LOGOUT</a></div>
+                        <div><a href="status?stat=LOGOUT">LOGOUT</a></div>
                     </div>
                 </div>
             </div>
         </div>
 
+
         <div class="restaurants">
-            <div class="cards">
-                <% if (data.length!=0){
-                    var i=1;
-                    data.forEach(function (element){ 
-                %>
-                <div class="cardTemp">
-                    <div class="image"><img src="images/<%= element.pImage; %>" alt= <%= element.pImage; %> height="100%" width="100%"></div>
-                    <div class="Pname pInfo"><%= element.productName; %></div>
-                    <div class="price pInfo">₹<%= element.price; %></div>
-                    <div class="cart"><a href="addToCart?id=<%= element.productId; %>">ADD TO CART</a></div>
+            <div class="restaurantHeader">
+                <div class="rimage"><img src="images/<%= data[0].rImage; %>" alt="<%= data[0].rImage; %>"  height="100%" width="100%"></div>
+                <div class="rInfo">
+                    <div class="rName"><%= data[0].rName; %></div>
+                    <div class="rAddress"><%= data[0].rAddress; %></div>
                 </div>
-                    <% }) %>
-                <% } %>
+            </div>
+            <div class="content">
+                <div class="categories">
+                    <% if(categories.length!=0){
+                        categories.forEach(element => {
+                    %>
+                    <div class="category"><%=element.category %></div>        
+                    <%   });
+                    } %> 
+                </div>
+                <div class="cards">
+                    <% if (data.length!=0){
+                        var i=1;
+                        data.forEach(function (element){ 
+                    %>
+                    <div class="cardTemp">
+                        <div class="image"><img src="images/<%= element.pImage; %>" alt= <%= element.pImage; %> height="100%" width="100%"></div>
+                        <div class="Pname pInfo"><%= element.productName; %></div>
+                        <div class="price pInfo">₹<%= element.price; %></div>
+                        <div class="cart"><a href="addToCart?id=<%= element.productId; %>">ADD TO CART</a></div>
+                    </div>
+                        <% }) %>
+                    <% } %>
+                </div>
             </div>
         </div>
     </div>

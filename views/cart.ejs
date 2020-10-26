@@ -1,3 +1,4 @@
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -16,18 +17,21 @@
                 <span class="line"></span>
             </div>
             <div class="nav-links">
-                <div class="status loginOptions"><a href="status?stat=<%=status; %>"> <%= status; %></a></div>
-                    <div class="loginOptions"><a href="register">REGISTER</a></div>
+                    <div class="restaurants"><a href="restaurants">RESTAURANTS</a></div>
                     <div class="dropdown logoutOptions">
                         <div class="dropbtn profile"><i class="fas fa-user"></i></div>
                         <div class="dropdown-content">
                             <div><a href="profile">PROFILE</a></div>
-                            <div><a href="status?stat=<%=status; %>">LOGOUT</a></div>
+                            <div><a href="status?stat=LOGOUT">LOGOUT</a></div>
                         </div>
                     </div>
             </div>
         </div>
 
+
+        <div class="mainPage">
+        <!-- <div class="greeting">HELLO <span><%=user%></span></div> -->
+        <div class="pageInfo">YOUR CART</span></div>
 
         <div class="restaurants">
             <form action="/cart" method="POST" class="formDiv">
@@ -44,22 +48,25 @@
                                     <div class="Pname"><%= element.productName; %></div>
                                     <div class="Rname"><%= element.rName; %></div>
                                 </div>
-                                <div class="status"><%= element.status; %></div>
+                                <div class="status"><%= element.Ostatus; %></div>
                             </div>
-                            <div class="cart">
-                                <span>
-                                    <button class="remove qtyMod">-</button>
-                                    <span > <input type="text" value="<%= element.Qty; %>" name="Qty" class="qtyValue"></span> 
-                                    <button class="add qtyMod">+</button> 
-                                </span>
-                                <span>
-                                    <span>₹</span> 
-                                    <span class="price"><%= element.price; %></span>
-                                </span>
-                                <span>
-                                    <span class="deleteOrder"><a href="deleteCart?id=<%= element.orderId; %>"><i class="deleteProduct fas fa-trash-alt"></i></a></span>
-                                </span>
-
+                            <div class="itemFooter">
+                                <div class="cart">
+                                    <span>
+                                        <button class="remove">-</button>
+                                        <span > <input type="text" value="<%= element.Qty; %>" name="Qty" class="qtyValue"></span> 
+                                        <button class="add">+</button> 
+                                    </span>
+                                    <span>
+                                        <span>₹</span> 
+                                        <span class="price"><%= element.price; %></span>
+                                    </span>
+                                </div>
+                                <div class="delete">
+                                    <span>
+                                        <span class="deleteOrder"><a href="deleteCart?id=<%= element.orderId; %>"><i class="deleteProduct fas fa-trash-alt"></i></a></span>
+                                    </span>
+                                </div>
                             </div>
                             <div class="orderId"><input type="text" readonly="readonly" value="<%= element.orderId; %>" name="orderId" ></div>   
                     </div>
@@ -67,23 +74,42 @@
                     <% } %>
                     
                 </div>  
-                <div class="placeOrder">
-                        <a href="#">PLACE ORDER</a>
-                    </div> 
-                    <div class="submit">
-                        <button type="submit">SUBMIT</button>
+                <div class="detailsSave">
+                    <button type="submit">SAVE</button>
                 </div>
                     
                 </form>       
                 <div class="priceDtl">
                     <div class="cartDtls">
-                        <div class="totalAmt total"></div>
+                        <div class="totalHeading">CHECKOUT SUMMARY</div>
+                        <div class="totalAmt">
+                            <div class="checkOut">Subtotal</div>
+                            <div class="Hvalue">
+                                <span>₹</span>
+                                <span class="total"></span>
+                            </div>
+                        </div>
+                        <div class="totalAmt">
+                            <div class="checkOut">Estimated Tax</div>
+                            <div class="Hvalue">
+                                <span>₹</span>
+                                <span class="taxTotal">50</span>
+                            </div>
+                        </div>
+                        <div class="totalAmt bill">
+                            <div class="checkOut">Estimated Total</div>
+                            <div class="Hvalue">
+                                <span>₹</span>
+                                <span class="estTotal"></span>
+                            </div>
+                        </div>
+                        <div class="placeOrder"><button><a href="#">PLACE ORDER</a></button></div>
                     </div>
                 </div>
 
         </div>
 
-
+    </div>
         
        
         

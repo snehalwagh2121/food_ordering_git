@@ -1,16 +1,85 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 *{
-    box-sizing: border-box;
+    box-sizing: inherit;
     overflow-x: hidden;
+    /* height: 100%;
+    width: 100%; */
 }
 .nav-links{
     width: 35%;
+}
+.restaurants{
+    position: relative;
+    height: 90%;
+    /* overflow: hidden; */
+    background-color: aquamarine;
+}
+.restaurantHeader{
+    z-index: 5;
+    /* position: fixed; */
+    background-color: beige;
+    /* margin: 4% 5% 0 0%; */
+    height: 30%;
+    width: 100%;
+    display: flex;
+    padding: 15px;
+}
+.restaurantHeader .rImage{
+    margin-left: 2%;
+    /* background-color: brown; */
+    width: 25%;
+}
+.restaurantHeader .rInfo{
+    margin-left: 2%;
+    width: 70%;
+    /* background-color: blueviolet; */
+    font-family: 'Roboto', sans-serif;
+}
+.restaurantHeader .rInfo .rName{
+    font-size: 2rem;
+    margin: 2% 0 0 2%;
+}
+.restaurantHeader .rInfo .rAddress{
+    font-size: 1.2rem;
+    margin: 0 0 0 2%;
+}
+.content{
+    width: 100%;
+    display: flex;
+    z-index: 2;
+    margin:0;
+    height: 70%;
+    /* overflow: hidden; */
+    background-color: lawngreen;
+}
+.content .categories{
+    /* z-index: 2; */
+    /* background-color: brown; */
+    /* position: fixed; */
+    margin-top:0%;
+    width: 20%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    margin-left: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem;
+    border-right: 1px solid #9ba4b4;
+    padding: 0% 0 0 5%;
+}
+.content .categories div{
+    margin-top: 5%;
 }
 .cards{
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    margin-top: 5%;
+    width: 70%;
+    /* height: 90%; */
+    margin: 0 0 0 30% ;
+    position: absolute;
 }
 .cardTemp{
     position: relative;
@@ -21,10 +90,8 @@
     flex-direction: column;
     margin: 25px;
     justify-content: center;
-    /* border: 2px solid #595959; */
     border-radius: 5%;
     padding: 0;
-    
     box-shadow: 0 1px 2px 1px black;
 }
 .cardTemp .image{
@@ -65,8 +132,6 @@
     transition: height 0.5s ease;
     margin: auto;
     /* opacity: 0; */
-}
-.cardTemp:hover {
 }
 .cardTemp:hover .pInfo{
     display: none;

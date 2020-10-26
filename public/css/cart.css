@@ -1,39 +1,77 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
 *{
     box-sizing: border-box;
     overflow-x: hidden;
+    /* width: 100vw; */
+}
+.nav-links{
+    padding: 0 20px;
+    margin-right: 40px;
+    width: 20%;
+}
+.mainPage{
+    width: 100vw;
+    /* padding: 10%; */
 }
 .restaurants{
     width: 100%;
     display: flex;
+}
+
+.greeting{
+    width: 100vw;
+    margin-top: 2%;
+    font-family: 'Source Sans Pro', sans-serif;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 2rem;
+    /* color: #f39233; */
+}
+.pageInfo{
+    width: 100vw;
+    margin: 2% 0 0 10%;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: bold;
+    font-size: 2rem;
+    color: #f39233;
 }
 .formDiv{
     width: 70%;
     height: 100%;
 }
 .cards{
-    /* width: 70%; */
+    width: 60%;
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
+    margin-left: 10%;
 }
 .cardTemp{
+    /* background-color: khaki; */
     box-sizing: border-box;
     height: 150px;
     width: 400px;
     display: flex;
     flex-direction: column;
-    margin: 25px;
+    margin: 25px 20px 10px 0;
     justify-content: center;
-    border: 2px solid #595959;
+    /* border: 2px solid #595959; */
+    box-shadow: 0 0 2px 2px #838383;
     border-radius: 15px;
-    padding: 10px 1px;
+    padding: 5px 1px;
     font-family: 'Source Sans Pro', sans-serif;
 }
+.cardTemp:hover{
+    box-shadow: 0 0 5px 3px #838383;
+}
+/* .cardTemp:hover .Pname{
+    font-size: 1.5rem;
+} */
 .restDtls{
     display: flex;
     width: 100%;
-    height: 70%;
+    height: 65%;
     /* justify-content: center;
     align-items: center; */
 }
@@ -43,39 +81,55 @@
 .restDtls .image{
     height: 95%;
     width: 35%;
+    margin: 0 2%;
     background-position: center;
     background-size: cover;
     /* box-shadow: violet; */
 }
 .restDtls .rInfo{
-    width: 30%;
+    /* background-color: lightblue; */
+    width: 35%;
     display: flex;
     flex-direction: column;
-    margin: 0 2%;
+    /* margin: 0 2%; */
     font-size: 1.2rem;
 }
 .restDtls .rInfo .Rname{
     font-size: 1rem;
 }
 .restDtls .status{
-    width: 30%;
+    /* background-color: lightcoral; */
+    width: 25%;
     font-size: 1.2rem;
-    /* margin-right: 2%; */
+    margin: 0 2%;
     text-align: end;
 }
 .orderId{
     display: none;
 }
-.cardTemp .cart{
-    margin-top: 2%;
-    height: 20%;
+.cardTemp .itemFooter{
+    width: 100%;
+    height: 25%;
     display: flex;
-    justify-content: space-evenly;
-}
-.cardTemp .cart span{
+    /* background-color: khaki; */
     overflow: hidden;
+}
+.cardTemp .cart{
+    /* margin-top: 2%; */
     height: 100%;
-    width: 30%;
+    display: flex;
+    align-items: center;
+    width: 80%;
+    justify-content: space-evenly;
+    overflow: hidden;
+}
+
+.cardTemp .cart span{
+    margin-top: 2%;
+    /* overflow: hidden; */
+    /* height: 90%; */
+    width: 50%;
+    /* display: flex; */
     text-align: center;
 }
 .cardTemp .cart span .price{
@@ -83,32 +137,108 @@
 }
 .cardTemp .cart span .qtyValue{
     padding: 5px;
-    width: 15%;
+    width: 20%;
     border-radius: 5px;
     border: none;
     text-align: center;
 }
-.cardTemp .cart span .qtyMod{
+.cardTemp .cart span button{
     border-radius: 50%;
-    border: none;
+    /* border: none; */
     padding: 3px 7px;
+    border: 1px solid #646464;
+    margin: 2px;
+}
+.itemFooter .delete{
+    height: 90%;
+    width: 30%;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    overflow: hidden;
+}
+.delete span{
+    height: 100%;
+    margin-top: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 .deleteProduct{
     color: rgb(0, 0, 0);
     /* margin-top: 30%; */
     /* height: 120%; */
 } 
+.deleteProduct:hover{
+    color: #373a40;
+}
+.detailsSave{
+    display: flex;
+    margin: 5% 0 0 15%;
+}
+.detailsSave button{
+    font-family: 'Source Sans Pro', sans-serif;
+    padding: 10px;
+    background-color: #50C878;
+    border: none;
+    border-radius: 10px;
+    width: 15%;
+    color: whitesmoke;
+    font-size: 1.2rem;
+}
+.detailsSave button:hover{
+    border: 1px solid #388f55;
+    /* box-shadow: 0px 0px 2px 3px #388f55; */
+    /* box-shadow: 0 0 5px 3px #838383; */
+}
 .restaurants .priceDtl{
-    width: 30%;
+    width: 20%;
+    margin-right: 20%;
 }
 .restaurants .priceDtl .cartDtls{
+    margin-top: 2%;
     position: fixed;
     width: 350px;
     height: 350px;
     border: 2px solid black;
+    padding: 10px 20px;
     /* margin: auto; */
 }
-
+.cartDtls .totalHeading{
+    font-size: 1.3rem;
+    padding: 5px;
+    text-align: center;
+}
+.cartDtls .totalAmt{
+    margin-top: 15px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.checkOut{
+    font-weight: bold;
+}
+.priceDtl .placeOrder{
+    width: 100%;
+    margin-left: 30%;
+}
+.cartDtls .placeOrder button{
+    margin: 10px;
+    color: whitesmoke;
+    background-color: #0779e4;
+    border: none;
+    border-radius: 15px;
+    padding: 10px;
+    width: 40%;
+}
+.cartDtls .placeOrder button:hover{
+    background-color: #035aa6;
+}
+.priceDtl .cartDtls .bill{
+    /* background-color: yellow; */
+    border-top: 0.1px dashed black;
+}
 @media (max-width: 600px){
     .navBar .nav-links{
         text-align: center;

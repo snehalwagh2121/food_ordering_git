@@ -8,7 +8,8 @@ const session=require('express-session');
 const multer = require('multer');
 const port = process.env.PORT || 3000;
 
-var reload = require('reload')
+var reload = require('reload');
+const { info } = require('console');
 
 var urlEncodedParser= bodyParser.urlencoded({extended : false})
 
@@ -115,7 +116,7 @@ server.get('/restaurants', (req, res)=>{
 
 const getProducts=(req, res, rId)=>{
     console.log("rId = "+rId);
-    const sql="select * from products where rId="+rId;
+    const sql="select p.*, r.* from products p inner join restaurants r on (p.rId=r.restaurantId) where rId="+rId;
     console.log('query to get menu = '+sql);
 
     db.query(sql, (err, result)=>{
@@ -125,8 +126,18 @@ const getProducts=(req, res, rId)=>{
             req.session.data=result;
             req.session.product=req.query.id;
             console.log('status session = '+req.session.status);
+            const sql="select distinct category from products where rId="+rId;
+            db.query(sql, (err, result1)=>{
+                if(!err)
+                {
+                    console.log('Fetched products and categories successfully');
+                    res.render('products',{data: result, status: req.session.status, categories: result1});
+                }else{
+                    console.log('could not get the menu, because of error: '+err);
+                    res.render('index',{status: req.session.status});
+                }
+            })
             // res.render('products', {data: result, message: req.session.message});
-            res.render('products',{data: result, status: req.session.status});
         }else{
             console.log('could not get the menu, because of error: '+err);
             res.render('index',{status: req.session.status});
@@ -154,6 +165,7 @@ server.post('/login', urlEncodedParser ,(req, res)=>{
         req.session.status='LOGOUT';
         console.log('user : '+result[0].userId);
         req.session.userId=result[0].userId;
+        req.session.userName=result[0].firstName;
         if(req.session.rId!=undefined){
             console.log('show all producst of a particular restaurant');
             getProducts(req, res, req.session.rId);
@@ -212,7 +224,7 @@ server.get('/foodCategory', (req, res)=>{
     db.query(sql, (err, result)=>{
         if(err){
             console.log('error in fetching the restaurant page ERR: '+err);
-            res.redirect('index', {status: req.session.status});
+            res.render('index', {status: req.session.status});
         }else{
             console.log('fetching restaurants with category: ');
             req.session.data=result;
@@ -240,7 +252,7 @@ server.get('/restaurant', (req, res)=>{
         console.log('category: '+category);
         console.log('RId= '+RId);
         //chnage query to fetch from products of a category
-        sql="select * from products where rId="+RId;
+        sql="select p.*, r.* from products p inner join restaurants r on (p.rId=r.restaurantId) where p.rId="+RId;
         flag=1;
         console.log('query to fetch restaurants menu for a particular restaurant : '+sql);
     }else{
@@ -251,14 +263,25 @@ server.get('/restaurant', (req, res)=>{
     }
     db.query(sql, (err, result)=>{
         if(err){
-            console.log('error in fetching the restaurant page');
+            console.log('error in fetching the restaurant page: err: '+err);
             res.render('index', {status: req.session.status});
         }else{
             console.log('fetching restaurants or products or categories: ');
             req.session.data=result;
-            if(flag)
-                res.render('products',{data: result, ProdCtgry:category, status: req.session.status});
-            else
+            if(flag){
+                const sql="select distinct category from products where rId="+req.query.rId;
+                console.log('query to get distinct restaurants = '+sql);
+                db.query(sql, (err, result2)=>{
+                    if(!err){
+                        console.log("got distict categories, products and restaurants info, rendering products page");
+                        res.render('products',{data: result, ProdCtgry:category, status: req.session.status, categories: result2});
+                    }else{
+                        console.log("could not get distinct categories for products page rendering the index page because of ERR: "+err);
+                        res.render('index', {status: req.session.status});
+                    }
+                })
+                //  getProducts(req, res, req.session.RId);
+            }else
                 res.render('restaurants',{data:result, ProdCtgry: category, status: req.session.status});
         }
     });
@@ -273,7 +296,7 @@ server.get('/cart', (req, res)=>{
         if(!err){
             console.log('showing the items in cart');
             req.session.data=result;
-            res.render('cart',{data: result});
+            res.render('cart',{data: result, user: req.session.userName});
         }else{
             console.log('error while fetching the orders. Err : '+err);
             getProducts(req, res, req.session.rId);
@@ -300,16 +323,30 @@ server.post('/cart', urlEncodedParser, (req, res)=>{
    
 });
 server.get('/deleteCart',(req,res)=>{
-    console.log(' delete order from cart with order id= '+req.query.orderId);
-    const sql="delete from orders where orderId="+req.query.orderId;
+    console.log(' delete order from cart with order id= '+req.query.id);
+    const sql="delete from orders where orderId="+req.query.id;
     console.log('query to dleete order from cart: '+sql);
     db.query(sql, (err, result)=>{
         if(!err){
             console.log('order deleted from cart');
-            res.redirect('cart');
+            const sql="select p.pImage, o.orderId, p.productName, p.price, o.Qty, o.Ostatus, r.rName from orders o "+
+            "inner join products p on (o.Pid=p.productId) inner join restaurants r on (p.rId= r.restaurantId)"+
+            "where o.CId="+req.session.userId;
+            console.log('query to get orders page after deletion of an order: '+sql);
+            db.query(sql,(err, result)=>{
+                if(!err){
+                    console.log('displaying cart');
+                    req.session.data=result;
+                    res.render('cart',{data: req.session.data, user: req.session.userName});
+                }else{
+                    console.log('error while getting the cart page:');
+                    res.render('index',{status:req.session.status});
+                }
+            })
+           
         }else{
             console.log('could not delete order from the cart : err: '+err);
-            res.redirect('cart');
+            res.redirect('cart',{data: req.session.data, user: req.session.userName});
         }
     })
 });
@@ -412,21 +449,53 @@ server.get('/profile', (req, res)=>{
             "inner join users u on(u.userId=o.CId) "+
             "inner join products p on (o.Pid= p.productId) "+
             "inner join restaurants r on(p.rId= r.restaurantId)"+
-            "where CId="+req.session.userId+" and Ostatus!='delivered'";
+            "where CId="+req.session.userId;
             console.log('query to fetch active orders: '+sql);
             db.query(sql, (err, result)=>{
                 if(err){
                     console.log('error in fetching orders');
                     res.render('profile',{data : 'error in fetching orders'});
                 }else{
-                    console.log('fetched acive orders: ');
+                    console.log('fetched acive orders and user profile: ');
+                    req.session.data=result;
+                    const sql="select o.Ostatus, p.*, r.rName, from products p inner join orders o on (o.Pid=p.produsctId)"
                     res.render('profile',{data:result});
                 }
             });
         }
     });
 });
-
+server.post('/profile',urlEncodedParser, (req, res)=>{
+    console.log('user id = '+req.session.userId);
+    console.log('body : '+req.body.fname);
+    const sql="update users set firstName = '"+req.body.fname+"', lastName='"+req.body.lname+"', email= '"+req.body.email+"', phone='"+req.body.contact+
+    "' address='"+req.body.address+"' , state='"+req.body.state+
+    "' where userId="+req.session.userId;
+    console.log(' query to edit personal info: '+sql);
+    db.query(sql, (err, result)=>{
+        if(!err){
+            console.log('updated the personal info of user : '+req.session.userId);
+            const sql="select o.*, u.*, p.*, r.* from orders o "+
+            "inner join users u on(u.userId=o.CId) "+
+            "inner join products p on (o.Pid= p.productId) "+
+            "inner join restaurants r on(p.rId= r.restaurantId)"+
+            "where CId="+req.session.userId+" and Ostatus!='delivered'";
+            console.log('query to fetch active orders and profile of user after update: : '+sql);
+            db.query(sql, (err, result)=>{
+                if(!err){
+                    console.log('fetched the profile of the user after update of profile info');
+                    req.session.data=result;
+                }else{
+                    console.log(' could not fetch the profile page after update of profile info. ERR : '+err);
+                }
+                res.render('profile', {data: req.session.data})
+            });
+        }else{
+            console.log('could not update the profile info for the user because of the following err. ERR :'+err);
+            res.render('profile',{data:req.session.data});
+        }
+    })
+})
 
 
 
