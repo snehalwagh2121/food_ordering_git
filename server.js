@@ -288,7 +288,7 @@ server.get('/restaurant', (req, res)=>{
 });
 server.get('/cart', (req, res)=>{
     console.log('showing cart page for user_id : '+req.session.userId);
-    const sql="select p.pImage, o.orderId, upper(p.productName), p.price, o.Qty, upper(o.Ostatus), upper(r.rName) from orders o "+
+    const sql="select p.pImage, o.orderId, p.productName, p.price, o.Qty, o.Ostatus, r.rName from orders o "+
     "inner join products p on (o.Pid=p.productId) inner join restaurants r on (p.rId= r.restaurantId)"+
     "where o.CId="+req.session.userId;
     console.log('query to fetch cart: '+sql);

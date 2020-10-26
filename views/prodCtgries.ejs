@@ -17,7 +17,7 @@
             </div>
             <div class="nav-links">
                 <div class="restaurants"><a href="restaurants">RESTAURANTS</a></div>
-                <div class="status"><a href="status?stat=<%=status; %>"> <%= status; %></a></div>
+                <div class="status loginOptions"><a href="status?stat=<%=status; %>"> <%= status; %></a></div>
                 <div class="loginOptions"><a href="register">REGISTER</a></div>
                 <div class="logoutOptions"><a href="cart"><i class="fas fa-shopping-cart"></i></a></div>
                 <div class="dropdown logoutOptions">
@@ -34,6 +34,7 @@
 
         </div>
         <div class="restaurants">
+            <div class="categoryHeading"><%=data[0].category.toUpperCase(); %></div>
             <div class="cards">
                 <% if (data.length!=0){
                     var i=1;

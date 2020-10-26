@@ -30,25 +30,23 @@
 
 
         <div class="mainPage">
-        <!-- <div class="greeting">HELLO <span><%=user%></span></div> -->
-        <div class="pageInfo">YOUR CART</span></div>
-
-        <div class="restaurants">
-            <form action="/cart" method="POST" class="formDiv">
-            <div class="cards">
-                    <!-- <div class="total"></div> -->
-                    <% if (data.length!=0){
-                        // var i=1;
-                        data.forEach(function (element){ 
-                    %>
-                    <div class="cardTemp">
+            <div class="pageInfo">YOUR CART</span></div>
+            <div class="restaurantsContainer">
+                <form action="/cart" method="POST" class="formDiv">
+                    <div class="cards">
+                        <!-- <div class="total"></div> -->
+                        <% if (data.length!=0){
+                            // var i=1;
+                            data.forEach(function (element){ 
+                        %>
+                        <div class="cardTemp">
                             <div class="restDtls">
                                 <div class="image"><img src="images/<%= element.pImage; %>" alt= <%= element.pImage; %> height="100%" width="100%"></div>
                                 <div class="rInfo">
                                     <div class="Pname"><%= element.productName; %></div>
                                     <div class="Rname"><%= element.rName; %></div>
                                 </div>
-                                <div class="status"><%= element.Ostatus; %></div>
+                                <div class="status"><%= element.Ostatus.toUpperCase(); %></div>
                             </div>
                             <div class="itemFooter">
                                 <div class="cart">
@@ -69,15 +67,15 @@
                                 </div>
                             </div>
                             <div class="orderId"><input type="text" readonly="readonly" value="<%= element.orderId; %>" name="orderId" ></div>   
+                        </div>
+                            <% }) %>
+                        <% } %>
+                        
+                    </div>  
+                    <div class="detailsSave">
+                        <button type="submit">SAVE</button>
                     </div>
-                        <% }) %>
-                    <% } %>
-                    
-                </div>  
-                <div class="detailsSave">
-                    <button type="submit">SAVE</button>
-                </div>
-                    
+                        
                 </form>       
                 <div class="priceDtl">
                     <div class="cartDtls">

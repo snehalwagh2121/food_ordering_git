@@ -7,11 +7,20 @@
     /* margin-right: 10px; */
     width: 40%;
 }
+.categoryHeading{
+    width: 100%;
+    margin-top: 2%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    color: #0f3460;
+}
 .cards{
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    margin-top: 5%;
+    margin-top: 2%;
 }
 .cardTemp{
     box-sizing: border-box;

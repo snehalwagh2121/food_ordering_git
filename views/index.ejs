@@ -15,11 +15,6 @@
                 <span class="line"></span>
             </div>
 
-            <div class="searchBar">
-                <input type="text" class="searchItem" placeholder="SEARCH..">
-                <i class="fa fa-search"></i>
-            </div>
-           
             <div class="nav-links">
                     <div class="restaurants"><a href="restaurants">RESTAURANTS</a></div>
                     <div class="status loginOptions"><a href="status?stat=<%=status; %>"> <%= status; %></a></div>
@@ -41,21 +36,25 @@
             </div>
             <div class="heading">CATEGORIES</div>
             <div class="categories">
-                <div class="cards breakfast">
+                <!-- <div class="cards breakfast">
                     <div class="categoryImg"></div>
-                    <div class="link"><a href="foodCategory?category=brunch">BRUNCH</a></div>
+                    <div class="link"><a href="foodCategory?category=brunch"></a>BRUNCH</a></div>
+                </div> -->
+                <div class="cards breakfast"><a href="foodCategory?category=brunch">
+                    <div class="categoryImg"></div>
+                    <div class="link">BRUNCH</div></a>
                 </div>
-                <div class="cards meal">
+                <div class="cards meal"><a href="foodCategory?category=meal">
                     <div class="categoryImg"></div>
-                    <div class="link"><a href="foodCategory?category=meal">MEAL</a></div>
+                    <div class="link">MEAL</div></a>
                 </div>
-                <div class="cards dessert">
+                <div class="cards dessert"><a href="foodCategory?category=dessert">
                     <div class="categoryImg"></div>
-                    <div class="link"><a href="foodCategory?category=dessert">DESSETS</a></div>
+                    <div class="link">DESSETS</div></a>
                 </div>
-                <div class="cards drinks">
+                <div class="cards drinks"><a href="foodCategory?category=drinks">
                     <div class="categoryImg"></div>
-                    <div class="link"><a href="foodCategory?category=drinks">DRINKS</a></div>
+                    <div class="link">DRINKS</div></a>
                 </div>
             </div>
         </div>
