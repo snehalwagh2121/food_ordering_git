@@ -11,24 +11,28 @@
 }
 .restaurants{
     position: relative;
-    height: 90%;
+    height: 100%;
     /* overflow: hidden; */
-    background-color: aquamarine;
+    /* background-color: aquamarine; */
 }
 .restaurantHeader{
+    /* margin-top: 10%; */
     z-index: 5;
     /* position: fixed; */
-    background-color: beige;
+    background: linear-gradient(to bottom, rgba(246, 131, 15, 1),  rgba(207, 104, 1, 0.8));
     /* margin: 4% 5% 0 0%; */
     height: 30%;
     width: 100%;
     display: flex;
     padding: 15px;
+    position: sticky;
+    box-shadow: 0 2px 2px 2px  rgba(185, 100, 15, 0.5);
 }
 .restaurantHeader .rImage{
     margin-left: 2%;
+    height: 90%;
     /* background-color: brown; */
-    width: 25%;
+    width: 20%;
 }
 .restaurantHeader .rInfo{
     margin-left: 2%;
@@ -49,14 +53,14 @@
     display: flex;
     z-index: 2;
     margin:0;
-    height: 70%;
+    height: 100%;
     /* overflow: hidden; */
-    background-color: lawngreen;
+    /* background-color: lawngreen; */
 }
 .content .categories{
     /* z-index: 2; */
     /* background-color: brown; */
-    /* position: fixed; */
+    position: fixed;
     margin-top:0%;
     width: 20%;
     height: 100vh;
@@ -66,20 +70,35 @@
     margin-left: 10px;
     font-family: 'Roboto', sans-serif;
     font-size: 1.5rem;
-    border-right: 1px solid #9ba4b4;
+    /* border-right: 1px solid #9ba4b4; */
     padding: 0% 0 0 5%;
 }
 .content .categories div{
     margin-top: 5%;
 }
+.content .categories div a{
+    
+    color: #1f3c88;
+}
+.categoryHeading{
+    width: 100%;
+    text-align: center;
+    margin: 2%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.7rem;
+    color: #1f3c88;
+    text-decoration: underline;
+    text-decoration-color: #390153;
+}
 .cards{
     display: flex;
-    justify-content: space-evenly;
+    /* justify-content: space-evenly; */
     flex-wrap: wrap;
     width: 70%;
     /* height: 90%; */
-    margin: 0 0 0 30% ;
+    margin: 0 0 0 20% ;
     position: absolute;
+    border-left: 1px solid black;
 }
 .cardTemp{
     position: relative;
@@ -88,7 +107,7 @@
     width: 250px;
     display: flex;
     flex-direction: column;
-    margin: 25px;
+    margin: 5% 10%;
     justify-content: center;
     border-radius: 5%;
     padding: 0;

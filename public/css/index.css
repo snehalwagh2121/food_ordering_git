@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 *{
     box-sizing: border-box;
     overflow-x: hidden;
@@ -21,17 +22,14 @@ a{
     color: whitesmoke;
 }
 .navBar{
-    /* position: absolute; */
     z-index: 9;
     margin-top: 0;  
     width: 100%;
-    /* position: fixed ; */
     background-color: #333333;
     display: flex;
     justify-content: space-between;
 }
 .site-title{
-    /* background-color: aquamarine; */
     font-family: 'Lato', sans-serif;
     font-size: 1.7rem;
     margin: auto 5px;
@@ -40,8 +38,6 @@ a{
 }
 
 .nav-links{
-    /* background-color: aliceblue; */
-    /* position: absolute; */
     margin-right: 10px;
     width: 30%;
     display: flex;
@@ -72,6 +68,7 @@ a{
     color: whitesmoke;
 }
 .dropdown-content{
+    z-index: 8;
     background-color: #333333;
     position: absolute;
     display: none;
@@ -99,16 +96,31 @@ a{
 
 
 .content{
-    margin-top: 5%;
-    /* background-color: blanchedalmond; */
     width: 100vw;
-    /* height: 60vh; */
-    /* overflow: hidden; */
+}
+.pageStart{
+    position: relative;
+    width: 100%;
+    height: 65%;
+}
+.welcomeImg{
+    position: relative;
+}
+.welcomeContent{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0,0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: whitesmoke;
+    font-family: 'Roboto', sans-serif;
+    font-size: 2rem;
 }
 .categories{
-    /* margin-top: 10%; */
-    /* background-color: #aaaaaa; */
-    /* height: 90%; */
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
@@ -124,7 +136,6 @@ a{
     border: 2px solid #6e6d6d;
     margin:2%;
     background-color: #637373;
-    /* margin: 2px; */
 }
 .categories .cards .link{
     text-align: center;
@@ -153,12 +164,9 @@ a{
     font-family: 'Roboto Slab', serif;
 }
 .categories .cards:hover{
-    /* height: 225px;
-    width: 225px ; */
     box-shadow: 0 3px 6px 3px #4c4c4c;
 }
 .outlets{
-    /* height: 50vh; */
     width: 90vw;
     margin: 0 auto;
 }
@@ -170,7 +178,6 @@ a{
 .places{
     display: flex;
     flex-wrap: wrap;
-    /* justify-content: space-evenly; */
 }
 .cities{
     width: 20%;
@@ -225,7 +232,6 @@ a{
 .searchBar{
     overflow: hidden;
     margin: auto ;
-    /* height: 200%; */
     position: relative;
     width: 35%;
 }

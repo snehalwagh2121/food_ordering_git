@@ -44,14 +44,19 @@
                     <% if(categories.length!=0){
                         categories.forEach(element => {
                     %>
-                    <div class="category"><%=element.category %></div>        
+                    <div class="category"><a href="#<%=element.category; %>"><%=element.category.toUpperCase() %></a></div>        
                     <%   });
                     } %> 
                 </div>
                 <div class="cards">
-                    <% if (data.length!=0){
-                        var i=1;
-                        data.forEach(function (element){ 
+                    <% if(categories.length!=0){
+                        categories.forEach(category => {
+                            %>
+                            <div class="categoryHeading" id="<%=category.category %>"><%=category.category.toUpperCase(); %></div>
+
+                            <%   if (data.length!=0){
+                                data.forEach(function (element){ 
+                                    if(element.category === category.category){ 
                     %>
                     <div class="cardTemp">
                         <div class="image"><img src="images/<%= element.pImage; %>" alt= <%= element.pImage; %> height="100%" width="100%"></div>
@@ -59,7 +64,10 @@
                         <div class="price pInfo">₹<%= element.price; %></div>
                         <div class="cart"><a href="addToCart?id=<%= element.productId; %>">ADD TO CART</a></div>
                     </div>
+                    <% } %>
                         <% }) %>
+                    <% } %>
+                    <% }) %>
                     <% } %>
                 </div>
             </div>

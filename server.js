@@ -194,8 +194,8 @@ server.get('/register', (req, res)=>{
 server.post('/register', urlEncodedParser ,(req, res)=>{
     console.log('body : ', req.body);
     const sql = "INSERT INTO `users`(`firstName`, `lastName`, `email`, `password`, `phone`, `address`, `State`, `Country`) "+
-    "VALUES ('"+ req.body.firstName+"','"+req.body.lastName+"','"+ req.body.email+"','"+req.body.password+"','"+
-    req.body.phone+"','"+req.body.address+"','"+req.body.state+"','"+req.body.country+"')";
+    "VALUES (upper('"+ req.body.firstName+"'),upper('"+req.body.lastName+"'),'"+ req.body.email+"','"+req.body.password+"','"+
+    req.body.phone+"',upper('"+req.body.address+"'),upper('"+req.body.state+"'),upper('"+req.body.country+"'))";
 
     db.query(sql, (err, result)=>{
         if(err){
@@ -288,7 +288,7 @@ server.get('/restaurant', (req, res)=>{
 });
 server.get('/cart', (req, res)=>{
     console.log('showing cart page for user_id : '+req.session.userId);
-    const sql="select p.pImage, o.orderId, p.productName, p.price, o.Qty, o.Ostatus, r.rName from orders o "+
+    const sql="select p.pImage, o.orderId, upper(p.productName), p.price, o.Qty, upper(o.Ostatus), upper(r.rName) from orders o "+
     "inner join products p on (o.Pid=p.productId) inner join restaurants r on (p.rId= r.restaurantId)"+
     "where o.CId="+req.session.userId;
     console.log('query to fetch cart: '+sql);
@@ -329,7 +329,7 @@ server.get('/deleteCart',(req,res)=>{
     db.query(sql, (err, result)=>{
         if(!err){
             console.log('order deleted from cart');
-            const sql="select p.pImage, o.orderId, p.productName, p.price, o.Qty, o.Ostatus, r.rName from orders o "+
+            const sql="select p.pImage, o.orderId, upper(p.productName), p.price, o.Qty, upper(o.Ostatus), upper(r.rName) from orders o "+
             "inner join products p on (o.Pid=p.productId) inner join restaurants r on (p.rId= r.restaurantId)"+
             "where o.CId="+req.session.userId;
             console.log('query to get orders page after deletion of an order: '+sql);
@@ -458,7 +458,7 @@ server.get('/profile', (req, res)=>{
                 }else{
                     console.log('fetched acive orders and user profile: ');
                     req.session.data=result;
-                    const sql="select o.Ostatus, p.*, r.rName, from products p inner join orders o on (o.Pid=p.produsctId)"
+                    // const sql="select o.Ostatus, p.*, r.rName, from products p inner join orders o on (o.Pid=p.produsctId)"
                     res.render('profile',{data:result});
                 }
             });
@@ -468,9 +468,9 @@ server.get('/profile', (req, res)=>{
 server.post('/profile',urlEncodedParser, (req, res)=>{
     console.log('user id = '+req.session.userId);
     console.log('body : '+req.body.fname);
-    const sql="update users set firstName = '"+req.body.fname+"', lastName='"+req.body.lname+"', email= '"+req.body.email+"', phone='"+req.body.contact+
-    "' address='"+req.body.address+"' , state='"+req.body.state+
-    "' where userId="+req.session.userId;
+    const sql="update users set firstName = upper('"+req.body.fname+"'), lastName=upper('"+req.body.lname+"'), email= '"+req.body.email+"', phone='"+req.body.contact+
+    "', address=upper('"+req.body.address+"') , state=upper('"+req.body.state+
+    "') where userId="+req.session.userId;
     console.log(' query to edit personal info: '+sql);
     db.query(sql, (err, result)=>{
         if(!err){
@@ -606,8 +606,8 @@ server.post('/addRestaurant', upload.single('image'),urlEncodedParser ,(req, res
     console.log('body : ', req.body);
     console.log("image :"+file.filename);
     const sql = "INSERT INTO `restaurants`(`rName`,`ownerName`, `ownerLastName`, `ownerEmail`, `ownerPassword`, `rPhone`, `rAddress`, `rState`, `rImage`) "+
-    "VALUES ('"+ req.body.rName+"','"+ req.body.firstName+"','"+req.body.lastName+"','"+ req.body.email+"','"+req.body.password+"','"+
-    req.body.phone+"','"+req.body.address+"','"+req.body.state+"','"+file.filename+"')";
+    "VALUES (upper('"+ req.body.rName+"'),upper('"+ req.body.firstName+"'),upper('"+req.body.lastName+"'),'"+ req.body.email+"','"+req.body.password+"','"+
+    req.body.phone+"',upper('"+req.body.address+"'),upper('"+req.body.state+"'),'"+file.filename+"')";
 
     console.log('sql to add restaurant = '+sql);
     db.query(sql, (err, result)=>{
@@ -628,7 +628,7 @@ server.get('/orders', (req,res)=>{
 });
 server.post('/orders',urlEncodedParser , (req, res)=>{
     console.log('change startus body : ',req.body);
-    const sql="update orders set Ostatus = '"+req.body.newStatus+"' where orderId= "+req.body.orderId;
+    const sql="update orders set Ostatus = upper('"+req.body.newStatus+"') where orderId= "+req.body.orderId;
     console.log('query fired : '+sql);
     db.query(sql, (err, result)=>{
         if(err){
