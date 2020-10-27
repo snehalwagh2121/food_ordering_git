@@ -251,12 +251,17 @@
         /* height: 100%; */
         width: 100%;
     }
+    .pageInfo{
+        margin-top: 13%;
+        font-size: 1.3rem;
+    }
     .restaurantsContainer{
         display: block;
         width: 100%;
     }
     .formDiv{
         width: 100%;
+        height: auto;
     }
     .restaurantsContainer .cards{
         width: 100%;

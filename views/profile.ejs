@@ -81,7 +81,7 @@
                     <% if (data.length!=0){
                         // var i=1;
                         data.forEach(function (element){ 
-                            if(element.Ostatus != "DELIVERED"){
+                            if(element.Ostatus == "RECEIVED" || element.Ostatus=="PREPARING"){
                     %>
                         <div class="order">
                             
@@ -108,7 +108,7 @@
                                     <div class="row1">STATUS</div>
                                     <div class="row2"><%= element.Ostatus; %></div>
                                 </div>
-                                <div class="cancelOrder"><a href="">CANCEL ORDER</a></div>
+                                <div class="cancelOrder"><a href="cancelOrder?id=<%=element.orderId ;%>">CANCEL ORDER</a></div>
                             
                         </div>
                         <% } %>
@@ -120,7 +120,7 @@
                     <% if (data.length!=0){
                         // var i=1;
                         data.forEach(function (element){ 
-                            if(element.Ostatus === "DELIVERED"){
+                            if(element.Ostatus === "DELIVERED" || element.Ostatus === "CANCELLED"){
                     %>
                     <div class="order">
                             

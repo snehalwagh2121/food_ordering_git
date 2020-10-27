@@ -7,7 +7,9 @@ const session=require('express-session');
 // const fileUpload = require('express-fileupload');
 const multer = require('multer');
 const port = process.env.PORT || 3000;
+const dotenv=require('dotenv');
 
+dotenv.config();
 var reload = require('reload');
 const { info } = require('console');
 
@@ -26,10 +28,10 @@ server.use(session({
 // server.use(fileUpload());
 
 const db=mysql.createConnection({
-    host: "food-db.cqaznpmn9lsc.us-east-2.rds.amazonaws.com",
-    database:"delicious_corner",
-    user:"admin",
-    password:"password"
+    host: process.env.DATABASE_HOST,
+    database:process.env.DATABASE,
+    user:process.env.DATABASE_USER,
+    password:process.env.DATABASE_PASS
 })
 db.connect((err)=>{
     if(!err)
@@ -289,9 +291,9 @@ server.get('/restaurant', (req, res)=>{
 });
 server.get('/cart', (req, res)=>{
     console.log('showing cart page for user_id : '+req.session.userId);
-    const sql="select p.pImage, o.orderId, p.productName, p.price, o.Qty, o.Ostatus, r.rName from orders o "+
+    const sql="select p.pImage, o.orderId, p.productName, p.price, o.Qty, o.Ostatus, r.rName, o.CId from orders o "+
     "inner join products p on (o.Pid=p.productId) inner join restaurants r on (p.rId= r.restaurantId)"+
-    "where o.CId="+req.session.userId;
+    "where o.CId="+req.session.userId +" and o.Ostatus='PLACED'";
     console.log('query to fetch cart: '+sql);
     db.query(sql, (err, result)=>{
         if(!err){
@@ -330,9 +332,9 @@ server.get('/deleteCart',(req,res)=>{
     db.query(sql, (err, result)=>{
         if(!err){
             console.log('order deleted from cart');
-            const sql="select p.pImage, o.orderId, p.productName, p.price, o.Qty, o.Ostatus, r.rName from orders o "+
+            const sql="select p.pImage, o.orderId, p.productName, p.price, o.Qty, o.Ostatus, r.rName, o.CId from orders o "+
             "inner join products p on (o.Pid=p.productId) inner join restaurants r on (p.rId= r.restaurantId)"+
-            "where o.CId="+req.session.userId;
+            "where o.CId="+req.session.userId +" and o.Ostatus='PLACED'";
             console.log('query to get orders page after deletion of an order: '+sql);
             db.query(sql,(err, result)=>{
                 if(!err){
@@ -408,7 +410,7 @@ server.get('/addToCart', (req, res)=>{
                             }
                         })
                     }else{
-                            const sql="insert into orders(`CId`,`Pid`,`Qty`,`Ostatus`) values ("+req.session.userId+","+req.query.id+",1, 'RECEIVED')";
+                            const sql="insert into orders(`CId`,`Pid`,`Qty`,`Ostatus`) values ("+req.session.userId+","+req.query.id+",1, 'PLACED')";
                             console.log('query to insert order in table : '+sql);
                             db.query(sql, (err, result)=>{
                                 if(!err){
@@ -440,6 +442,35 @@ server.get('/addToCart', (req, res)=>{
                  });
         }      
     });
+
+server.get('/placeOrder',(req, res)=>{
+    console.log('placing the orders from cart for user = '+req.query.id);
+    const sql="update orders set Ostatus='RECEIVED' where CId="+req.query.id+" and Ostatus='PLACED'";
+    console.log('query to place the order = ' +sql);
+    db.query(sql,(err, result)=>{
+        if(!err){
+            console.log('placed the order for user id: '+req.session.userId);
+            const sql="select p.pImage, o.orderId, p.productName, p.price, o.Qty, o.Ostatus, r.rName,o.CId from orders o "+
+            "inner join products p on (o.Pid=p.productId) inner join restaurants r on (p.rId= r.restaurantId)"+
+            "where o.CId="+req.session.userId +" and o.Ostatus='PLACED'";
+            console.log('query to get orders page after placing the order: '+sql);
+            db.query(sql,(err, result)=>{
+                if(!err){
+                    console.log('displaying cart');
+                    req.session.data=result;
+                    res.render('cart',{data: req.session.data, user: req.session.userName});
+                }else{
+                    console.log('error while getting the cart page:');
+                    res.render('index',{status:req.session.status});
+                }
+            })
+        }else{
+            console.log('could not place the order : err: '+err);
+            res.redirect('cart',{data: req.session.data, user: req.session.userName});
+        }
+    })
+})
+    
 
 server.get('/profile', (req, res)=>{
     console.log('Login User: '+req.session.userId);
@@ -485,7 +516,7 @@ server.post('/profile',urlEncodedParser, (req, res)=>{
             "inner join users u on(u.userId=o.CId) "+
             "inner join products p on (o.Pid= p.productId) "+
             "inner join restaurants r on(p.rId= r.restaurantId)"+
-            "where CId="+req.session.userId+" and Ostatus!='delivered'";
+            "where CId="+req.session.userId;
             console.log('query to fetch active orders and profile of user after update: : '+sql);
             db.query(sql, (err, result)=>{
                 if(!err){
@@ -502,7 +533,34 @@ server.post('/profile',urlEncodedParser, (req, res)=>{
         }
     })
 })
-
+server.get('/cancelOrder',(req, res)=>{
+    console.log('cancel order with order id= '+req.query.id);
+    const sql="update orders set Ostatus='CANCELLED' where orderId = "+req.query.id;
+    console.log('query to cancel the order = '+sql);
+    db.query(sql, (err, result)=>{
+        if(!err){
+            console.log('cancelled the order');
+            const sql="select o.*, u.*, p.*, r.* from orders o "+
+            "inner join users u on(u.userId=o.CId) "+
+            "inner join products p on (o.Pid= p.productId) "+
+            "inner join restaurants r on(p.rId= r.restaurantId)"+
+            "where CId="+req.session.userId;
+            console.log('query to fetch all orders and profile of user after cancelling the order: : '+sql);
+            db.query(sql, (err, result)=>{
+                if(!err){
+                    console.log('fetched the profile of the user after update of profile info');
+                    req.session.data=result;
+                }else{
+                    console.log(' could not fetch the profile page after update of profile info. ERR : '+err);
+                }
+                res.render('profile', {data: req.session.data})
+            });
+        }else{
+            console.log('could not Cancel the order for the user because of the following err. ERR :'+err);
+            res.render('profile',{data:req.session.data});
+        }
+    })
+});
 
 
 

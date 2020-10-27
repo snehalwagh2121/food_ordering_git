@@ -30,7 +30,12 @@
 
 
         <div class="mainPage">
+            <% if (data.length==0){ %>
+                <div class="pageInfo">YOUR CART IS EMPTY</span></div>
+            <%} %>
+            <% if (data.length!=0){ %>
             <div class="pageInfo">YOUR CART</span></div>
+            <%} %>
             <div class="restaurantsContainer">
                 <form action="/cart" method="POST" class="formDiv">
                     <div class="cards">
@@ -73,18 +78,23 @@
                         
                     </div>  
                     <div class="detailsSave">
+                        <% if (data.length!=0){
+                            %>
                         <button type="submit">SAVE</button>
+                        <% }%>
                     </div>
                         
                 </form>       
                 <div class="priceDtl">
+                    <% if (data.length!=0){
+                            %>
                     <div class="cartDtls">
                         <div class="totalHeading">CHECKOUT SUMMARY</div>
                         <div class="totalAmt">
                             <div class="checkOut">Subtotal</div>
                             <div class="Hvalue">
                                 <span>₹</span>
-                                <span class="total"></span>
+                                <span class="total">0</span>
                             </div>
                         </div>
                         <div class="totalAmt">
@@ -98,11 +108,12 @@
                             <div class="checkOut">Estimated Total</div>
                             <div class="Hvalue">
                                 <span>₹</span>
-                                <span class="estTotal"></span>
+                                <span class="estTotal">0</span>
                             </div>
                         </div>
-                        <div class="placeOrder"><button><a href="#">PLACE ORDER</a></button></div>
+                        <div class="placeOrder"><button><a href="placeOrder?id=<%=data[0].CId ;%>">PLACE ORDER</a></button></div>
                     </div>
+                    <% }%>
                 </div>
 
         </div>
