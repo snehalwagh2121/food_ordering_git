@@ -85,7 +85,11 @@ a{
 }
 
 .dropdown:hover .dropdown-content{
+    
+    /* width: 100%; */
+    padding: 10px;
     display: block;
+    /* background-color: blue; */
 }
 .dropdown-content div a{
     font-size: 1.2rem;
@@ -297,9 +301,12 @@ input:focus, textarea:focus, select:focus, button:focus{
         width: 100%;
     }
     .dropdown:hover .dropdown-content{
+        margin-left: 15%;
+        width: 100%;
         display: flex;
         justify-content: space-evenly;
         position: relative;
+   
     }
     .dropdown:hover .dropbtn{
         display: none;
@@ -317,6 +324,15 @@ input:focus, textarea:focus, select:focus, button:focus{
     }
     .content .heading{
         font-size: 1.5rem;
+        margin-top: 10%;
+    }
+    .pageStart{
+        height: 30%;
+        margin-bottom: 10%;
+    }
+    .welcomeContent{
+        font-size: 1.5rem;
+        text-align: center;
     }
     .categories .cards{
         height: 170px;

@@ -251,6 +251,7 @@ server.get('/restaurant', (req, res)=>{
         req.session.rId=RId;
         console.log('category: '+category);
         console.log('RId= '+RId);
+        req.session.category=undefined;
         //chnage query to fetch from products of a category
         sql="select p.*, r.* from products p inner join restaurants r on (p.rId=r.restaurantId) where p.rId="+RId;
         flag=1;
@@ -368,7 +369,7 @@ server.get('/addToCart', (req, res)=>{
         res.redirect('login');
     }else{
         console.log('user is already logged in hence progressing with saving the order in cart');
-                if(req.session.category!=null)
+                if(req.session.category!=undefined)
                 categoryPage=true;
                 //query to check if product already exists, if yes.. increment the quantity
                 const sql="select * from orders where Pid="+req.query.id+" and CId="+req.session.userId;
@@ -386,7 +387,8 @@ server.get('/addToCart', (req, res)=>{
                                 if(req.session.category==undefined)
                                 {
                                     console.log('products page');
-                                    res.render('products',{data: req.session.data, status: req.session.status});
+                                    getProducts(req, res, req.session.rId);
+                                    // res.render('products',{data: req.session.data, status: req.session.status});
                                 }else{
                                     console.log('products category page: ');
                                     res.render('prodCtgries',{data: req.session.data, status: req.session.status});   
@@ -397,7 +399,8 @@ server.get('/addToCart', (req, res)=>{
                                 if(req.session.category==undefined)
                                 {
                                     console.log('products page');
-                                    res.render('products',{data: req.session.data, status: req.session.status});
+                                    getProducts(req, res, req.session.rId)
+                                    // res.render('products',{data: req.session.data, status: req.session.status});
                                 }else{
                                     console.log('products category page: ');
                                     res.render('prodCtgries',{data: req.session.data, status: req.session.status});   
@@ -410,10 +413,12 @@ server.get('/addToCart', (req, res)=>{
                             db.query(sql, (err, result)=>{
                                 if(!err){
                                     console.log('sucessfully inserted the order in cart');
+                                    console.log('category: '+req.session.category)
                                     if(req.session.category==undefined)
                                     {
                                         console.log('products page');
-                                        res.render('products',{data: req.session.data, status: req.session.status});
+                                        getProducts(req, res, req.session.rId);
+                                        // res.render('products',{data: req.session.data, status: req.session.status});
                                     }else{
                                         console.log('products category page: ');
                                         res.render('prodCtgries',{data: req.session.data, status: req.session.status});   
@@ -423,7 +428,8 @@ server.get('/addToCart', (req, res)=>{
                                     if(req.session.category==undefined)
                                     {
                                         console.log('products page');
-                                        res.render('products',{data: req.session.data, status: req.session.status});
+                                        getProducts(req, res, req.session.rId);
+                                        // res.render('products',{data: req.session.data, status: req.session.status});
                                     }else{
                                         console.log('products category page: ');
                                         res.render('prodCtgries',{data: req.session.data, status: req.session.status});   

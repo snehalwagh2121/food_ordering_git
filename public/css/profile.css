@@ -219,3 +219,107 @@ body{
     position: absolute;
     right: 0;
 }
+
+@media (max-width: 600px){
+    .profilePage{
+        display: block;
+        overflow: auto;
+    }
+    .profilePage .navigate{
+        position: relative;
+        width: 100%;
+        height: auto;
+        overflow: auto;
+        border: none;
+        /* background-color: blueviolet; */
+    }
+    .profileContent{
+        width: 100%;
+    }
+    .profileContent .personalInfo{
+        height: auto;
+    }
+    .profileContent .personalInfo .heading{
+        font-size: 1.5rem;
+    }
+    .profileContent .personalInfo .infoForm{
+        padding: 15px 0 0 2px;
+        /* background-color: brown; */
+        width: 100%;
+        position: relative;
+    }
+    .profileContent .personalInfo .infoForm .info{
+        font-size: 1.2rem;
+        margin-left: 10px;
+    }
+    .infoForm .nameInfo .lnameInfo{
+        /* background-color: brown; */
+        margin-left: 5px;
+    }
+    .lnameInfo label{
+        margin-left: 10px;
+    }
+    .lnameInfo input{
+        margin-left: 10px;
+    }
+    .info input{
+        width: 60%;
+        font-size: 1rem;
+    }
+    .submit button,.editBtn button{
+        width: 30%;
+        font-size: 1rem;
+    }
+    .editBtn button{
+        margin: -10px 5px 0 0;
+        width: 10%;
+        font-size: 0.8rem;
+    }
+    .activeOrders{
+        margin-top: 10%;
+        height: auto;
+    }
+    .activeOrders .heading, .orderHistory .heading{
+        font-size: 1.5rem;
+    }
+    .order{
+        padding: 5px;
+        width: 90%;
+        margin-top: 5%;
+        height: 100px;
+    }
+    .orderImg{
+        display: none;
+    }
+    .orderSec{
+        width: 20%;
+        padding: 0;
+        margin: 0;
+    }
+    .orderInfo{
+        width: 100%;
+    }
+    .orderName{
+        font-size: 0.8rem;
+    }
+    .restaurant{
+        font-size: 0.7rem;
+    }
+    .price, .qty, .status, .cancelOrder{
+        width: 20%;
+        padding: 0;
+        margin: 0;
+    }
+    .orderHistory .order .orderSec{
+        width: 25%;
+    }
+    .orderHistory .order .price, .orderHistory .order .qty, .orderHistory .order .status, .orderHistory .order .cancelOrder{
+        width: 25%;
+    }
+    .row1{
+        font-size: 0.8rem;
+    }
+    .row2{
+        font-size: 0.7rem;
+    }
+}
