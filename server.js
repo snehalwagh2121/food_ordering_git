@@ -330,7 +330,7 @@ server.get('/deleteCart',(req,res)=>{
     db.query(sql, (err, result)=>{
         if(!err){
             console.log('order deleted from cart');
-            const sql="select p.pImage, o.orderId, upper(p.productName), p.price, o.Qty, upper(o.Ostatus), upper(r.rName) from orders o "+
+            const sql="select p.pImage, o.orderId, p.productName, p.price, o.Qty, o.Ostatus, r.rName from orders o "+
             "inner join products p on (o.Pid=p.productId) inner join restaurants r on (p.rId= r.restaurantId)"+
             "where o.CId="+req.session.userId;
             console.log('query to get orders page after deletion of an order: '+sql);
