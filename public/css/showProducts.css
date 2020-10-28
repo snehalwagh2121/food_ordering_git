@@ -24,7 +24,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Aclonica', sans-serif;
+    font-family: 'Roboto Condensed', sans-serif;
 }
 .changeStatusForm div span{
     /* width: 50%; */
@@ -32,7 +32,7 @@
     color: #32e0c4;
 }
 .changeStatusForm div input{
-    font-family: 'Aclonica', sans-serif;
+    font-family: 'Roboto Condensed', sans-serif;
     height: 30px;
     width: 80%;
     text-align: center;
@@ -42,7 +42,7 @@
 .changeStatusForm div button{
     width: 80%;
     height: 30px;
-    font-family: 'Aclonica', sans-serif;
+    font-family: 'Roboto Condensed', sans-serif;
     color: #212121;
     border-radius: 20px;
 }

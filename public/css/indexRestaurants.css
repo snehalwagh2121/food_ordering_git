@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap');
 *{
     box-sizing: border-box;
     overflow-x: hidden;
@@ -52,7 +51,7 @@
     text-align: center;
     /* color: whitesmoke; */
     color: black;
-    font-family: 'Noto Serif', serif;
+    font-family: 'Roboto Condensed', sans-serif;
 }
 .cardTemp .Rname{
     font-weight: bolder;
