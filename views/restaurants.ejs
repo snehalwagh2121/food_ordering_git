@@ -38,7 +38,7 @@
                     data.forEach(function (element){ 
                 %>
                 <div ><a href="products?id=<%= element.restaurantId; %>" class="cardTemp">
-                    <div class="image"><img src="images/<%= element.rImage; %>" alt= <%= element.rImage; %> height="100%" width="100%"></div>
+                    <div class="image"><img data-src="images/<%= element.rImage; %>" alt= <%= element.rImage; %> class="lazyload" height="100%" width="100%"></div>
                     <div class="info">
                         <div class="Rname"><%= element.rName; %></div>
                         <div class="location"><%= element.rAddress; %></div>

@@ -42,7 +42,7 @@
                     data.forEach(function (element){ 
                 %>
                 <div class="cardTemp">
-                    <div class="image"><img src="images/<%= element.pImage; %>" alt= <%= element.pImage; %> height="100%" width="100%"></div>
+                    <div class="image"><img data-src="images/<%= element.pImage; %>" class="lazyload" alt= <%= element.pImage; %> height="100%" width="100%"></div>
                     <div class="Pname"><%= element.productName; %></div>
                     <div class="restaurant"><%= element.rName; %></div>
                     
@@ -57,6 +57,8 @@
             </div>
         </div>
     </div>
+                    
+    <script src="js/lazysizes.min.js" async></script>
     <script src="js/index.js"></script>
     <script src="https://kit.fontawesome.com/04ce6063ff.js" crossorigin="anonymous"></script>
 </body>
