@@ -197,8 +197,8 @@ a{
     color: #393b44;
 }
 .footer{
-    height: 50vh;
-    widows: 100vw;
+    /* height: 50vh; */
+    width: 100vw;
 }
 .footerHeading{
     text-align: center;
@@ -208,6 +208,7 @@ a{
 .footerColm{
     display: flex;
     justify-content: space-evenly;
+    margin-bottom: 50px;
 }
 .company{
     display: flex;
