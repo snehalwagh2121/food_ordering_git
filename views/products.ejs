@@ -34,7 +34,7 @@
 
         <div class="restaurants">
             <div class="restaurantHeader" id="restaurantHeader">
-                <div class="rimage"><img data-src="images/<%= data[0].rImage; %>" alt="<%= data[0].rImage; %>"  calss="lazyload" height="100%" width="100%"></div>
+                <div class="rimage"><img src="images/<%= data[0].rImage; %>" alt="<%= data[0].rImage; %>"  calss="lazyload" height="100%" width="100%"></div>
                 <div class="rInfo">
                     <div class="rName"><%= data[0].rName; %></div>
                     <div class="rAddress"><%= data[0].rAddress; %></div>
@@ -60,7 +60,7 @@
                                     if(element.category === category.category){ 
                     %>
                     <div class="cardTemp">
-                        <div class="image"><img data-src="images/<%= element.pImage; %>" alt= <%= element.pImage; %> class="lazyload" height="100%" width="100%"></div>
+                        <div class="image"><img src="images/<%= element.pImage; %>" alt= <%= element.pImage; %> class="lazyload" height="100%" width="100%"></div>
                         <div class="Pname pInfo"><%= element.productName; %></div>
                         <div class="price pInfo">₹<%= element.price; %></div>
                         <div class="cart"><a href="addToCart?id=<%= element.productId; %>">ADD TO CART</a></div>

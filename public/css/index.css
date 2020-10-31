@@ -132,6 +132,7 @@ a{
     text-align: center;
     font-size: 2rem;
     font-weight: bold;
+    margin-top: 20px;
 }
 .categories .cards{
     height: 220px;
@@ -180,6 +181,7 @@ a{
     font-size: 1.8rem;
     margin: 20px;
     text-align: center;
+    margin-top: 20px;
 }
 .places{
     display: flex;
@@ -203,7 +205,7 @@ a{
 .footerHeading{
     text-align: center;
     font-size: 1.8rem;
-    margin: 10px 0;
+    margin-top: 20px;
 }
 .footerColm{
     display: flex;

@@ -24,12 +24,19 @@ cards.addEventListener('click',e=>{
     if(e.target.getAttribute('class')==='remove'){
        var newQty= e.target.parentElement.children[1].children[0].value;
         newQty=newQty-1;
+        if(newQty<1){
+            newQty=0;
+        }
         e.target.parentElement.children[1].children[0].value=newQty;
         newBill=e.target.parentElement.parentElement.children[1].children[1].innerText;
         let endValue=parseInt(total.innerText)-parseInt(newBill);
         total.innerText=endValue;
         console.log("total = "+total.innerText);
         estTotal.innerText=endValue+50;
+        if(newQty<1){
+            total.innerText=0;
+            estTotal.innerText=50;
+        }
         console.log(" remove new bill = "+newBill);
         e.preventDefault();
     }else if(e.target.getAttribute('class')==='add'){

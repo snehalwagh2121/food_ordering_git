@@ -303,9 +303,19 @@ server.get('/cart', (req, res)=>{
 });
 server.post('/cart', urlEncodedParser, (req, res)=>{
     console.log('cart object: ',req.body );  
-    console.log(req.body.Qty.length);
+    console.log('qty length: '+req.body.Qty.length);
+    console.log('order id length: '+req.body.orderId.length);
         for(var i=0; i<req.body.Qty.length; i++){
-            const sql="update orders set Qty="+req.body.Qty[i]+" where orderId="+req.body.orderId[i];
+            console.log('orderId: '+req.body.orderId[i]+" quantity : "+req.body.Qty[i]);
+            if(req.body.Qty.length==1){
+                console.log('only 1 elemt present to be updated in cart : ');
+                console.log('order id='+req.body.orderId);
+                var sql="update orders set Qty="+req.body.Qty[i]+" where orderId="+req.body.orderId;
+            }else{
+                console.log('only 1 elemt present to be updated in cart : ');
+                console.log('order id='+req.body.orderId[i]);
+                var sql="update orders set Qty="+req.body.Qty[i]+" where orderId="+req.body.orderId[i];
+            }
             console.log('query to update the qty in cart = '+sql);
             db.query(sql,(err, result)=>{
                 if(err){
@@ -315,10 +325,10 @@ server.post('/cart', urlEncodedParser, (req, res)=>{
                 }
             });
             if(i==req.body.Qty.length-1){
+                console.log('i :' + i);
                 res.redirect('cart');
             }
         }
-   
 });
 server.get('/deleteCart',(req,res)=>{
     console.log(' delete order from cart with order id= '+req.query.id);
@@ -327,21 +337,21 @@ server.get('/deleteCart',(req,res)=>{
     db.query(sql, (err, result)=>{
         if(!err){
             console.log('order deleted from cart');
-            const sql="select p.pImage, o.orderId, p.productName, p.price, o.Qty, o.Ostatus, r.rName, o.CId from orders o "+
-            "inner join products p on (o.Pid=p.productId) inner join restaurants r on (p.rId= r.restaurantId)"+
-            "where o.CId="+req.session.userId +" and o.Ostatus='PLACED'";
-            console.log('query to get orders page after deletion of an order: '+sql);
-            db.query(sql,(err, result)=>{
-                if(!err){
-                    console.log('displaying cart');
-                    req.session.data=result;
-                    res.render('cart',{data: req.session.data, user: req.session.userName});
-                }else{
-                    console.log('error while getting the cart page:');
-                    res.render('index',{status:req.session.status});
-                }
-            })
-           
+            // const sql="select p.pImage, o.orderId, p.productName, p.price, o.Qty, o.Ostatus, r.rName, o.CId from orders o "+
+            // "inner join products p on (o.Pid=p.productId) inner join restaurants r on (p.rId= r.restaurantId)"+
+            // "where o.CId="+req.session.userId +" and o.Ostatus='PLACED'";
+            // console.log('query to get orders page after deletion of an order: '+sql);
+            // db.query(sql,(err, result)=>{
+            //     if(!err){
+            //         console.log('displaying cart');
+            //         req.session.data=result;
+            //         res.render('cart',{data: req.session.data, user: req.session.userName});
+            //     }else{
+            //         console.log('error while getting the cart page:');
+            //         res.render('index',{status:req.session.status});
+            //     }
+            // })
+           res.redirect('cart');
         }else{
             console.log('could not delete order from the cart : err: '+err);
             res.redirect('cart',{data: req.session.data, user: req.session.userName});

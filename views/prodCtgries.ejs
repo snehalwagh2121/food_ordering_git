@@ -35,7 +35,7 @@
 
         </div>
         <div class="restaurants">
-            <div class="categoryHeading"><%=data[0].category; %></div>
+        <div class="categoryHeading"><% if (data.length!=0){%><p><%=data[0].category; %></p><% }%></div>
             <div class="cards">
                 <% if (data.length!=0){
                     var i=1;
