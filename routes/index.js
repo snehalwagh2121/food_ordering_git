@@ -27,17 +27,12 @@ server.use(session({
 }));
 server.use(router);
 // server.use(fileUpload());
-const db=mysql.createConnection({
+const db=mysql.createPool({
+    connectionLimit: 10,
     host: process.env.DATABASE_HOST,
     database:process.env.DATABASE,
     user:process.env.DATABASE_USER,
     password:process.env.DATABASE_PASS
-})
-db.connect((err)=>{
-    if(!err)
-        console.log('successfully connected to DB');
-    else
-        console.log('could not connect to DB', err);
 });
 
 const storage = multer.diskStorage({
@@ -113,7 +108,7 @@ server.get('/restaurants', (req, res)=>{
 
 const getProducts=(req, res, rId)=>{
     console.log("rId = "+rId);
-    const sql="select p.*, r.* from products p inner join restaurants r on (p.rId=r.restaurantId) where rId="+rId;
+    const sql="select p.*, r.* from products p right join restaurants r on (p.rId=r.restaurantId) where rId="+rId;
     console.log('query to get menu = '+sql);
 
     db.query(sql, (err, result)=>{
@@ -312,7 +307,7 @@ server.post('/cart', urlEncodedParser, (req, res)=>{
                 console.log('order id='+req.body.orderId);
                 var sql="update orders set Qty="+req.body.Qty[i]+" where orderId="+req.body.orderId;
             }else{
-                console.log('only 1 elemt present to be updated in cart : ');
+                console.log('more than 1 elemt present to be updated in cart : ');
                 console.log('order id='+req.body.orderId[i]);
                 var sql="update orders set Qty="+req.body.Qty[i]+" where orderId="+req.body.orderId[i];
             }

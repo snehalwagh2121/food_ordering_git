@@ -1,0 +1,46 @@
+version: '3.8'
+
+services: 
+  mysqldb:
+    build:
+      context: ./mysqldb
+      dockerfile: ./Dockerfile
+    image: snehalwagh2121/mysqldb
+    container_name: mysqldb
+    restart: unless-stopped
+    env_file: ./.env
+    environment:
+      MYSQL_ROOT_PASSWORD: $DATABASE_PASS
+      MYSQL_DATABASE: $DATABASE
+      MYSQL_PASSWORD: $DATABASE_PASS
+      MYSQL_ALLOW_EMPTY_PASSWORD: true
+    ports:
+      - $MYSQL_LOCAL_PORT:$MYSQL_DOCKER_PORT
+    expose:
+      - $MYSQL_LOCAL_PORT
+    networks:
+      - foodservice-net 
+
+  foodservice-api:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: snehalwagh2121/foodservice
+    restart: unless-stopped
+    depends_on:
+      - mysqldb
+    stdin_open: true
+    ports:
+      - 3000:3000  
+    tty: true
+    networks:
+      - foodservice-net 
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules    
+
+networks:
+  foodservice-net:
+    driver: bridge      
+
+
